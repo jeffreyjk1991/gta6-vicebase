@@ -1,4 +1,4 @@
-"""Editorial data for ViceBase (checked against official sources on 2026-11-18)."""
+"""Editorial data for GTASIX (checked against official sources on 2026-11-18)."""
 ROCKSTAR='https://www.rockstargames.com/VI'
 PS5='https://www.playstation.com/en-us/games/grand-theft-auto-vi/'
 PS5SSD='https://www.playstation.com/en-us/support/hardware/ps5-install-m2-ssd/'
@@ -39,7 +39,7 @@ add('gta-6-best-price-where-to-buy','Where to buy GTA 6 cheapest: U.S. PS5 and X
 'Compare $79.99 Standard Edition prices at major U.S. retailers, potential rewards and code-in-box pitfalls.',
 'As checked November 18, 2026, the GTA VI Standard Edition is $79.99 at PlayStation Store, Xbox Store, Walmart, Target and Best Buy. Discount eligibility, rewards and checkout taxes determine the actual cheapest final price. The current retail case contains a download code, not a disc.',
 ['Choose your platform first: PS5, PS5 Pro or Xbox Series X|S, and confirm compatibility on the store page.',
- 'Check the official digital storefront and major trusted retailers for current price and availability; see the ViceBase Buy / Deals page for links.',
+ 'Check the official digital storefront and major trusted retailers for current price and availability; see the GTASIX Buy / Deals page for links.',
  'Look for legitimate savings already available to you: qualified retailer card discounts, earned rewards or a valuable trade-in.',
  'Compare the final cart total including shipping and tax. A small sticker-price saving can disappear in delivery costs.',
  'Avoid unverified third-party accounts, suspicious cheap key sellers, VPN region switching and early-access scams.'],

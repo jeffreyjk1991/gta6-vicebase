@@ -1,7 +1,7 @@
 from PIL import Image,ImageDraw,ImageFont,ImageEnhance
 import cairosvg,io
 from pathlib import Path
-root=Path('/mnt/data/gta6-vicebase/site/assets')
+root=Path(__file__).resolve().parent.parent/'site'/'assets'
 base=Image.open(io.BytesIO(cairosvg.svg2png(url=str(root/'vice-skyline.svg'),output_width=1200,output_height=790))).convert('RGB').crop((0,80,1200,710)).convert('RGBA')
 # left-hand dark gradient for legibility
 layer=Image.new('RGBA',base.size,(0,0,0,0))
@@ -14,7 +14,7 @@ d=ImageDraw.Draw(base)
 font='/usr/share/fonts/truetype/dejavu/DejaVuSansCondensed-Bold.ttf'
 small='/usr/share/fonts/truetype/clear-sans/ClearSans-Bold.ttf'
 fs=ImageFont.truetype(font,100);sub=ImageFont.truetype(small,33);tag=ImageFont.truetype(small,25)
-d.text((65,75),'VICEBASE',font=sub,fill='#ffb5b8')
+d.text((65,75),'GTASIX.TECH',font=sub,fill='#ffb5b8')
 d.line([(66,130),(390,130)],fill='#fe8eac',width=4)
 d.text((56,200),'OWN THE',font=fs,fill='white',stroke_width=1)
 d.text((56,300),'STREETS.',font=fs,fill='#f69eae')

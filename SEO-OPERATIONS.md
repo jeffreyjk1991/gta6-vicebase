@@ -1,4 +1,4 @@
-# ViceBase: search discovery and AI answer visibility
+# GTASIX: search discovery and AI answer visibility
 
 Last checked: November 18, 2026. These actions improve technical readiness; they **cannot guarantee a #1 ranking** or inclusion in an AI answer.
 
@@ -15,8 +15,8 @@ Last checked: November 18, 2026. These actions improve technical readiness; they
 
 ## Most urgent manual actions
 
-1. **Check production hostname.** Open the live Vercel project and confirm that `https://gta6-vicebase.vercel.app/`, `/gta-6-facts/`, `/map/`, `/characters/`, `/robots.txt` and `/sitemap.xml` all return successful public responses (not Vercel Authentication). If the actual production domain differs, run `BASE_URL=https://YOUR-DOMAIN python source/build.py`, then deploy the generated changes.
-2. **Verify ownership in Google Search Console.** Add the exact canonical site/domain. Submit `https://gta6-vicebase.vercel.app/sitemap.xml`. Inspect the homepage, confirmed-facts hub, map and top-five guide URLs with URL Inspection and request indexing where available. Monitor page indexing, indexing exclusions and query performance; Google chooses whether and when to index.
+1. **Check production hostname.** Open the live Vercel project and confirm that `https://gtasix.tech/`, `/gta-6-facts/`, `/map/`, `/characters/`, `/robots.txt` and `/sitemap.xml` all return successful public responses (not Vercel Authentication). The new domain must be added and publicly verified in Vercel before search engines can retrieve the canonical pages. See `DOMAIN-SETUP.md`.
+2. **Verify ownership in Google Search Console.** Add the exact canonical site/domain. Submit `https://gtasix.tech/sitemap.xml`. Inspect the homepage, confirmed-facts hub, map and top-five guide URLs with URL Inspection and request indexing where available. Monitor page indexing, indexing exclusions and query performance; Google chooses whether and when to index.
 3. **Add the site in Bing Webmaster Tools.** Submit the same sitemap. IndexNow can be configured later once domain ownership/key are verified; never deploy a fake verification key.
 4. **Check Vercel Deployment Protection and bot firewall.** Search engines and OAI-SearchBot must be able to fetch the public pages with HTTP 200; a robots.txt allow rule does not override login or 403.
 5. **Check launch-day facts.** When GTA VI launches, personally verify gameplay guides and release updates. Keep `VERIFY AT LAUNCH` labels until testing has been performed; write original mission, achievement, map and vehicle coverage rather than large sets of thin pages.

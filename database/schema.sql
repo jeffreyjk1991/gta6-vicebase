@@ -1,4 +1,4 @@
--- ViceBase Neon Postgres schema. Already provisioned 2026-11-18 in separate Neon project.
+-- GTASIX Neon Postgres schema. Already provisioned 2026-11-18 in separate Neon project.
 CREATE TABLE IF NOT EXISTS resource_requests (
   id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   topic TEXT NOT NULL,

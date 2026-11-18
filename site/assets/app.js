@@ -26,7 +26,7 @@
   const langRegion=(navigator.language||'en-US').split('-').at(-1).toUpperCase();
   const defaultRegion=({GB:'UK',IE:'UK',DE:'EU',FR:'EU',ES:'EU',IT:'EU',NL:'EU',PL:'EU',AU:'AU',NZ:'NZ',IN:'IN',JP:'JP',CA:'US',US:'US'})[langRegion]||'LOCAL';
   let chosenRegion=defaultRegion;
-  try{const saved=localStorage.getItem('vicebase-store-region');if(saved && (saved in releaseTimes || saved==='LOCAL'))chosenRegion=saved;}catch{}
+  try{const saved=(localStorage.getItem('gtasix-store-region')||localStorage.getItem('vicebase-store-region'));if(saved && (saved in releaseTimes || saved==='LOCAL'))chosenRegion=saved;}catch{}
   if(regionInput)regionInput.value=chosenRegion;
   const pad=n=>String(n).padStart(2,'0');
   function updateCountdown(){
@@ -46,7 +46,7 @@
       board.classList.toggle('released',diff===0);
     }
   }
-  regionInput?.addEventListener('change',()=>{chosenRegion=regionInput.value;try{localStorage.setItem('vicebase-store-region',chosenRegion);}catch{}updateCountdown();});
+  regionInput?.addEventListener('change',()=>{chosenRegion=regionInput.value;try{localStorage.setItem('gtasix-store-region',chosenRegion);}catch{}updateCountdown();});
   updateCountdown();setInterval(updateCountdown,1000);
   const buyButtons=$$('[data-buy-platform]');
   if(buyButtons.length){
@@ -83,7 +83,7 @@
   }
   const storageBtn=$('#storage-check');if(storageBtn){function calc(){const platform=$('#storage-platform')?.value,free=Number($('#storage-free')?.value||0),needed=platform==='ps5'?212:Number($('#storage-target')?.value||212),result=$('#storage-result');if(!Number.isFinite(free)||free<0||!Number.isFinite(needed)||needed<=0){result.querySelector('strong').textContent='Enter valid values';result.querySelector('p').textContent='Use a non-negative free-space number and a positive install size.';return;}const deficit=Math.max(0,needed-free);result.querySelector('strong').textContent=deficit?'FREE '+Math.ceil(deficit)+' GB':'READY TO PRELOAD';result.querySelector('p').textContent=deficit?`You have ${free.toLocaleString()} GB free. Reserve at least ${needed.toLocaleString()} GB and allow extra room for updates.`:`You meet the ${needed.toLocaleString()} GB target. Keep additional headroom for game patches and future updates.`;}storageBtn.addEventListener('click',calc);$('#storage-platform')?.addEventListener('change',()=>{const xbox=$('#xbox-needed');if(xbox)xbox.classList.toggle('hidden',$('#storage-platform').value==='ps5');calc();});calc();}
   const downloadBtn=$('#download-check');if(downloadBtn){function calc(){const size=Number($('#download-size')?.value),speed=Number($('#download-speed')?.value),el=$('#download-result');if(size<=0||speed<=0||!Number.isFinite(size)||!Number.isFinite(speed)){el.querySelector('strong').textContent='Enter valid values';el.querySelector('p').textContent='Both size and speed must be greater than zero.';return;}const h=size*8000/speed/3600,lo=h,hi=h*1.3;const fmt=(n)=>n<1?`${Math.round(n*60)} min`:n<24?`${n.toFixed(1)} hr`:`${(n/24).toFixed(1)} days`;el.querySelector('strong').textContent=fmt(lo)+' – '+fmt(hi);el.querySelector('p').textContent='Estimated time at '+speed+' Mbps for '+size+' GB; real speeds depend on Wi‑Fi, network and platform servers.';}downloadBtn.addEventListener('click',calc);calc();}
-  const checklist=$('#launch-checklist');if(checklist){const boxes=$$('input[type="checkbox"]',checklist),key='vicebase-checklist-v1';let saved=[];try{saved=JSON.parse(localStorage.getItem(key)||'[]');}catch{}function draw(){boxes.forEach((b,i)=>{b.checked=saved.includes(i);b.closest('.check-item')?.classList.toggle('done',b.checked);});const done=saved.length,total=boxes.length;$('#check-progress').textContent=`${done} / ${total} READY`;}boxes.forEach((b,i)=>b.addEventListener('change',()=>{saved=boxes.flatMap((x,ix)=>x.checked?[ix]:[]);try{localStorage.setItem(key,JSON.stringify(saved));}catch{}draw();}));draw();}
+  const checklist=$('#launch-checklist');if(checklist){const boxes=$$('input[type="checkbox"]',checklist),key='gtasix-checklist-v1';let saved=[];try{saved=JSON.parse(localStorage.getItem(key)||localStorage.getItem('vicebase-checklist-v1')||'[]');}catch{}function draw(){boxes.forEach((b,i)=>{b.checked=saved.includes(i);b.closest('.check-item')?.classList.toggle('done',b.checked);});const done=saved.length,total=boxes.length;$('#check-progress').textContent=`${done} / ${total} READY`;}boxes.forEach((b,i)=>b.addEventListener('change',()=>{saved=boxes.flatMap((x,ix)=>x.checked?[ix]:[]);try{localStorage.setItem(key,JSON.stringify(saved));}catch{}draw();}));draw();}
   $$('.copy-link').forEach(b=>b.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(location.href);b.textContent='COPIED ✓';setTimeout(()=>b.textContent='COPY LINK',2000);}catch{b.textContent='Copy the URL above';}}));
   $$('.video-click').forEach(el=>el.addEventListener('click',()=>{const url=el.dataset.video;if(url)window.open(url,'_blank','noopener,noreferrer');}));
 })();

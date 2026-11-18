@@ -1,4 +1,4 @@
-/* ViceBase GTA 6 map: GTADB/YANIS CC BY 4.0 community reconstruction + original concept map.
+/* GTASIX GTA 6 map: GTADB/YANIS CC BY 4.0 community reconstruction + original concept map.
  * The game map has not been independently verified building-by-building. This is not
  * a Rockstar asset or a guaranteed in-game map. Map imagery processed by GTAMI.
  */
@@ -20,9 +20,9 @@
   let community=[],personal=[],mode='detailed',filterMode='all',query='',selected=null;
   let W=4096,H=5698,scale=1,x=0,y=0,fitScale=.1,zoomFrame=0,pinTimer=0,addPin=false,pinAt=null,imageLoaded=false,highLoaded=false;
   const bookmarks=new Set();
-  try{const v=JSON.parse(localStorage.getItem('vicebase-atlas-bookmarks-v1')||'[]');if(Array.isArray(v))v.filter(q=>typeof q==='string').forEach(q=>bookmarks.add(q));}catch{}
-  try{const v=JSON.parse(localStorage.getItem('vicebase-private-pins-v1')||'[]');if(Array.isArray(v))personal=v.filter(p=>p&&typeof p.title==='string'&&Number.isFinite(p.x)&&Number.isFinite(p.y)).slice(0,150).map(p=>({...p,kind:'custom',cat:'custom'}));}catch{}
-  function save(){try{localStorage.setItem('vicebase-atlas-bookmarks-v1',JSON.stringify([...bookmarks]));localStorage.setItem('vicebase-private-pins-v1',JSON.stringify(personal));}catch{}}
+  try{const v=JSON.parse((localStorage.getItem('gtasix-atlas-bookmarks-v1')||localStorage.getItem('vicebase-atlas-bookmarks-v1'))||'[]');if(Array.isArray(v))v.filter(q=>typeof q==='string').forEach(q=>bookmarks.add(q));}catch{}
+  try{const v=JSON.parse((localStorage.getItem('gtasix-private-pins-v1')||localStorage.getItem('vicebase-private-pins-v1'))||'[]');if(Array.isArray(v))personal=v.filter(p=>p&&typeof p.title==='string'&&Number.isFinite(p.x)&&Number.isFinite(p.y)).slice(0,150).map(p=>({...p,kind:'custom',cat:'custom'}));}catch{}
+  function save(){try{localStorage.setItem('gtasix-atlas-bookmarks-v1',JSON.stringify([...bookmarks]));localStorage.setItem('gtasix-private-pins-v1',JSON.stringify(personal));}catch{}}
   function clamp(v,a,b){return Math.min(b,Math.max(a,v));}
   function items(){return mode==='concept'?concept:community.concat(personal);}
   function match(p){const cat=filterMode==='all'||filterMode===p.cat||p.cat==='custom';const text=(!query||(p.title+' '+(p.subtitle||'')+' '+(p.description||'')).toLowerCase().includes(query));return cat&&text;}
@@ -62,7 +62,7 @@
     const m=modes[mode];W=m.w;H=m.h;world.style.width=W+'px';world.style.height=H+'px';
     $('#atlas-detailed').classList.toggle('selected',mode==='detailed');$('#atlas-concept').classList.toggle('selected',mode==='concept');
     $('#atlas-detailed').setAttribute('aria-pressed',String(mode==='detailed'));$('#atlas-concept').setAttribute('aria-pressed',String(mode==='concept'));
-    $('#atlas-hud-sub').textContent=mode==='detailed'?'YANIS COMMUNITY MAP / CC BY 4.0':'ORIGINAL VICEBASE CONCEPT ATLAS';
+    $('#atlas-hud-sub').textContent=mode==='detailed'?'YANIS COMMUNITY MAP / CC BY 4.0':'ORIGINAL GTASIX CONCEPT ATLAS';
     $('#atlas-status').textContent=mode==='detailed'?'COMMUNITY / UNOFFICIAL':'CONCEPT / UNOFFICIAL';
     if(mode==='concept'){
       base.src=assets.concept;imageLoaded=true;

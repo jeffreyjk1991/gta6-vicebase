@@ -1,4 +1,4 @@
-/* VICEBASE GTA 6 Atlas: independent neon game-world cartography */
+/* GTASIX GTA 6 Atlas: independent neon game-world cartography */
 .map-intro{padding-top:54px;padding-bottom:30px}
 .map-intro .crumb{font-size:10px;color:#b79aad;margin-bottom:25px}
 .map-intro-row{display:flex;justify-content:space-between;align-items:flex-end;gap:24px}
@@ -132,7 +132,7 @@
 .hero-gta6 em{font-style:normal;color:#ff9d9c}
 
 
-/* ViceBase v2 street-level community map. Map UI stays branded; imagery is CC BY 4.0. */
+/* GTASIX v2 street-level community map. Map UI stays branded; imagery is CC BY 4.0. */
 .atlas-stage{min-height:730px;background:#1a3042}
 .atlas-viewport{top:0;bottom:0}
 .atlas-world{width:4096px;height:5698px}

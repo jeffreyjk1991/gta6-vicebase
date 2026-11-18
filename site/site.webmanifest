@@ -1,6 +1,6 @@
 {
-  "name": "VICEBASE \u2014 GTA 6 Guides",
-  "short_name": "VICEBASE",
+  "name": "GTASIX.tech — GTA 6 Guides & Map",
+  "short_name": "GTASIX",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#0c0e15",
@@ -11,5 +11,6 @@
       "sizes": "any",
       "type": "image/svg+xml"
     }
-  ]
+  ],
+  "description": "Independent GTA 6 maps, characters, gameplay guides, video links and launch tools."
 }

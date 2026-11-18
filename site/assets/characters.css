@@ -1,4 +1,4 @@
-/* VICEBASE GTA 6 cast directory: original editorial layout. */
+/* GTASIX GTA 6 cast directory: original editorial layout. */
 .cast-hero{overflow:hidden;background:radial-gradient(ellipse at 80% 20%,#66324b44,transparent 62%),linear-gradient(115deg,#17121f,#111826);border-bottom:1px solid #4d3b55}
 .cast-hero-row{display:grid;grid-template-columns:1.05fr 1fr;align-items:center;gap:55px;padding-top:65px;padding-bottom:65px;min-height:560px}
 .cast-eyebrow{font:700 11px 'Space Mono',monospace;color:#ffb6a3;letter-spacing:.12em;display:flex;align-items:center;gap:9px}

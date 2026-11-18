@@ -6,26 +6,26 @@ content visible on each page, and search rankings cannot be guaranteed.
 import re
 
 TITLE_OVERRIDES = {
-    '/': 'GTA 6 Guides, Map, Characters & Gameplay | ViceBase',
-    '/map/': 'GTA 6 Map: Detailed Leonida & Vice City | ViceBase',
-    '/characters/': 'GTA 6 Characters: Jason, Lucia & More | ViceBase',
-    '/buy/': 'Where to Buy GTA 6: PS5 & Xbox Prices | ViceBase',
-    '/videos/': 'Official GTA 6 Trailers & Gameplay Videos | ViceBase',
-    '/tools/': 'GTA 6 Storage Calculator & Download Timer | ViceBase',
-    '/guides/': 'GTA 6 Guides: Storage, Fixes & Gameplay | ViceBase',
-    '/gta-6-facts/': 'GTA 6 Confirmed Facts: Launch, Map & Cast | ViceBase',
-    '/guides/gta-6-download-size-ps5-xbox/': 'GTA 6 Download Size: PS5 & Xbox Storage | ViceBase',
-    '/guides/best-ps5-ssd-requirements-for-gta-6/': 'Best PS5 SSD Specs for GTA 6 | ViceBase',
-    '/guides/gta-6-pc-release-system-requirements/': 'GTA 6 PC Release & Requirements: What Is Known | ViceBase',
-    '/guides/gta-6-release-date-and-time/': 'GTA 6 Release Date & Unlock Times | ViceBase',
-    '/guides/gta-6-console-performance-fps/': 'GTA 6 FPS & Console Performance: Confirmed | ViceBase',
-    '/guides/gta-6-leonida-vice-city-map/': 'GTA 6 Map: Leonida Regions Explained | ViceBase',
-    '/guides/gta-6-cheat-codes/': 'GTA 6 Cheat Codes: Verified Status | ViceBase',
-    '/guides/gta-6-vehicles-best-cars/': 'GTA 6 Cars & Vehicles: What Is Verified | ViceBase',
-    '/guides/gta-6-missions-walkthroughs/': 'GTA 6 Missions & Walkthroughs: Guide Hub | ViceBase',
-    '/guides/gta-6-best-price-where-to-buy/': 'GTA 6 Price Comparison & Buying Tips | ViceBase',
-    '/guides/gta-6-jason-lucia-characters/': 'GTA 6 Jason & Lucia: Character Guide | ViceBase',
-    '/guides/gta-6-preload-not-working/': 'GTA 6 Preload Not Working? PS5 & Xbox Fixes | ViceBase',
+    '/': 'GTA 6 Guides, Map, Characters & Gameplay | GTASIX',
+    '/map/': 'GTA 6 Map: Detailed Leonida & Vice City | GTASIX',
+    '/characters/': 'GTA 6 Characters: Jason, Lucia & More | GTASIX',
+    '/buy/': 'Where to Buy GTA 6: PS5 & Xbox Prices | GTASIX',
+    '/videos/': 'Official GTA 6 Trailers & Gameplay Videos | GTASIX',
+    '/tools/': 'GTA 6 Storage Calculator & Download Timer | GTASIX',
+    '/guides/': 'GTA 6 Guides: Storage, Fixes & Gameplay | GTASIX',
+    '/gta-6-facts/': 'GTA 6 Confirmed Facts: Launch, Map & Cast | GTASIX',
+    '/guides/gta-6-download-size-ps5-xbox/': 'GTA 6 Download Size: PS5 & Xbox Storage | GTASIX',
+    '/guides/best-ps5-ssd-requirements-for-gta-6/': 'Best PS5 SSD Specs for GTA 6 | GTASIX',
+    '/guides/gta-6-pc-release-system-requirements/': 'GTA 6 PC Release & Requirements: What Is Known | GTASIX',
+    '/guides/gta-6-release-date-and-time/': 'GTA 6 Release Date & Unlock Times | GTASIX',
+    '/guides/gta-6-console-performance-fps/': 'GTA 6 FPS & Console Performance: Confirmed | GTASIX',
+    '/guides/gta-6-leonida-vice-city-map/': 'GTA 6 Map: Leonida Regions Explained | GTASIX',
+    '/guides/gta-6-cheat-codes/': 'GTA 6 Cheat Codes: Verified Status | GTASIX',
+    '/guides/gta-6-vehicles-best-cars/': 'GTA 6 Cars & Vehicles: What Is Verified | GTASIX',
+    '/guides/gta-6-missions-walkthroughs/': 'GTA 6 Missions & Walkthroughs: Guide Hub | GTASIX',
+    '/guides/gta-6-best-price-where-to-buy/': 'GTA 6 Price Comparison & Buying Tips | GTASIX',
+    '/guides/gta-6-jason-lucia-characters/': 'GTA 6 Jason & Lucia: Character Guide | GTASIX',
+    '/guides/gta-6-preload-not-working/': 'GTA 6 Preload Not Working? PS5 & Xbox Fixes | GTASIX',
 }
 
 META_OVERRIDES = {
@@ -63,7 +63,7 @@ def meta_for(path, title, description, articles):
     if path.startswith('/guides/') and path.endswith('/') and path not in ('/guides/',):
         # Brand should not consume the useful query phrase.
         if path not in TITLE_OVERRIDES:
-            t = re.sub(r'\s*\| ViceBase GTA VI$', ' | ViceBase', t)
+            t = re.sub(r'\s*\| GTASIX GTA VI$', ' | GTASIX', t)
     d = META_OVERRIDES.get(path)
     if not d:
         d = description
