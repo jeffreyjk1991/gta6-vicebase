@@ -2,7 +2,7 @@ from pathlib import Path
 from bs4 import BeautifulSoup
 import json,re
 from urllib.parse import urlparse,unquote
-root=Path('/mnt/data/gta6-vicebase/site');htmls=list(root.rglob('*.html'))
+root=Path(__file__).resolve().parent.parent/'site';htmls=list(root.rglob('*.html'))
 errors=[];checks=0;external=set();titles=set();paths=set()
 for file in htmls:
  s=BeautifulSoup(file.read_text(), 'html.parser')

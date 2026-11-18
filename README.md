@@ -64,3 +64,12 @@ The `/buy/` prices are a manually verified U.S. snapshot of $79.99 Standard Edit
 - See `source/GTADB_DATA_CREDITS.md` for links, sources, attribution and licensing. The externally hosted map image must remain credited. Third-party map and Rockstar artwork remain the rights of their respective owners.
 
 This is an independent, unofficial fan guide. Map accuracy will need launch-day verification. Do not label the reconstruction as official or a screenshot of the retail game.
+
+## November 18 SEO and AI search readiness update
+
+- New source-checked `/gta-6-facts/` question-and-answer hub with official links to game platforms, regions, and edition details.
+- Descriptive metadata for high-intent guides, character, map, storefront and tool pages, preserving the existing ViceBase design.
+- Stronger supplementary guidance on PS5 storage, M.2 SSD compatibility, launch timings, download errors, price comparisons and region restrictions.
+- Simplified sitemap and clearer structured data; 404 pages are marked `noindex`. Public crawling is explicitly allowed for OAI-SearchBot, Googlebot and Bingbot. These are technical prerequisites, **not ranking guarantees**.
+- Regenerate and audit with `python source/build.py && python source/seo_audit.py && python source/validate.py`.
+- See [`SEO-OPERATIONS.md`](SEO-OPERATIONS.md) for the manual actions: confirm a publicly accessible Vercel production URL, verify the site in Search Console and submit the sitemap.

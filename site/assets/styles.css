@@ -39,3 +39,16 @@
   .site-header .nav-link:focus-visible,.site-header .nav-link:hover{background:#322438}
 }
 @media(max-width:365px){.site-header .brand-gta6{display:none}}
+
+/* SEO guide comparisons: readable tables, no horizontal page overflow. */
+.seo-extra{margin:30px 0 40px;padding:20px 24px;border:1px solid rgba(177,190,222,.16);background:rgba(20,24,41,.5);border-radius:12px}
+.seo-extra h2{margin:0 0 12px}.seo-extra p{line-height:1.75}.seo-extra a,.info-page a{overflow-wrap:anywhere}
+.seo-table-wrap{overflow-x:auto;max-width:100%;margin:18px 0;border:1px solid rgba(177,190,222,.13);border-radius:10px}
+.seo-table{width:100%;border-collapse:collapse;min-width:430px;text-align:left;line-height:1.6}
+.seo-table th{color:#fbbed5;background:#232338;text-transform:uppercase;font-size:.8em;letter-spacing:.04em}
+.seo-table td,.seo-table th{padding:12px 14px;border-bottom:1px solid rgba(177,190,222,.14);vertical-align:top}
+.seo-table tr:last-child td{border-bottom:0}.seo-table td{color:#dedbea}
+.facts-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:20px 0 32px}
+.fact-block{border:1px solid rgba(177,190,222,.18);border-radius:12px;padding:20px;background:rgba(22,28,48,.55)}
+.fact-block p{margin:12px 0;font-size:1rem;line-height:1.7}.fact-block a{font-size:.85rem;font-weight:750;color:#f0adc9;text-decoration:underline;text-underline-offset:4px}
+@media(max-width:640px){.facts-grid{grid-template-columns:1fr}.seo-extra{padding:16px}.seo-table{font-size:.88em}}
