@@ -1,6 +1,6 @@
 # ViceBase — GTA VI Resource Hub
 
-A mobile-friendly, neon gaming-themed GTA VI resource website built on static HTML, CSS and vanilla JavaScript. This version contains 36 editorially sourced guides across 8 categories, 52 indexed routes including category and information pages, first-party video links, a live local search index, a PS5/Xbox storage calculator, a download-time estimator, and a saved launch checklist, a live store-region-selectable release countdown, and a "Where to Buy" deal desk with manually checked PS5/Xbox storefront prices and 6 money-saving tips.
+A mobile-friendly, neon gaming-themed GTA VI resource website built on static HTML, CSS and vanilla JavaScript. This version contains 36 editorially sourced guides across 8 categories, 53 indexed routes including a dedicated GTA 6 Leonida map, first-party video links, a live local search index, a PS5/Xbox storage calculator, a download-time estimator, and a saved launch checklist, a native 24-pin interactive Leonida concept atlas with filters/zoom/bookmarks, a live store-region-selectable release countdown, and a "Where to Buy" deal desk with manually checked PS5/Xbox storefront prices and 6 money-saving tips.
 
 **Editorial as-of:** 2026-11-18. The game is scheduled to launch 2026-11-19. Update launch-day articles as soon as actual play can be verified; guides marked `VERIFY AT LAUNCH` are not claims to contain tested gameplay before release.
 
@@ -9,6 +9,8 @@ A mobile-friendly, neon gaming-themed GTA VI resource website built on static HT
 - `site/` — **Vercel root directory**; contains pre-generated static pages, JS/CSS, images, `robots.txt`, `sitemap.xml`, metadata, `vercel.json`.
 - `source/content.py` — guide content, categories, roadmap and video links.
 - `source/build.py` — generates the complete static website from the editorial content.
+- `source/map_atlas.py` — original illustrated GTA 6 map SVG and sourced region/theme-marker metadata.
+- `site/map/` + `site/assets/map.js` / `map.css` — interactive native map experience, drag/zoom, filters, search and device-local bookmarks.
 - `source/validate.py` — tests metadata, JSON-LD, and internal links.
 - `source/make_og.py` — generates share-preview artwork (requires Pillow and CairoSVG).
 - `database/schema.sql` — Neon Postgres tables for guide metadata, resource requests and feedback, created in the separate `gta6-vicebase` Neon project.
@@ -52,3 +54,9 @@ ViceBase is an independent fan project unaffiliated with Rockstar Games, Take-Tw
 ## Price desk policy (November 18, 2026)
 
 The `/buy/` prices are a manually verified U.S. snapshot of $79.99 Standard Edition at mainstream sellers, not an automated price tracking service. Check the seller at checkout. Target Circle Card may have a 5% discount on eligible orders, but Target excludes GTA software from some general promotions; no savings are guaranteed. Retail cases are code-in-box, not game discs.
+
+## Map licensing and accuracy
+
+The Leonida map illustration is original and does not reproduce a third-party tile set, leaked data or an official Rockstar map. Region names are sourced from Rockstar; exact coastlines, roads and pin placements are illustrative. The map's six primary regions are labeled as officially named; the other 18 markers are clearly identified as noncanonical exploration themes. It also offers an outbound link to the detailed fan map at vice-city.app/map, with no asset scraping or embedding.
+
+Run `python source/test_map_inline.py` to smoke-test the atlas with Chromium in a network-restricted environment (the QA harness inlines local assets).
