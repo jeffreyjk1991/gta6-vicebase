@@ -55,8 +55,12 @@ ViceBase is an independent fan project unaffiliated with Rockstar Games, Take-Tw
 
 The `/buy/` prices are a manually verified U.S. snapshot of $79.99 Standard Edition at mainstream sellers, not an automated price tracking service. Check the seller at checkout. Target Circle Card may have a 5% discount on eligible orders, but Target excludes GTA software from some general promotions; no savings are guaranteed. Retail cases are code-in-box, not game discs.
 
-## Map licensing and accuracy
+## Detailed GTA VI map and official poster (November 18, 2026)
 
-The Leonida map illustration is original and does not reproduce a third-party tile set, leaked data or an official Rockstar map. Region names are sourced from Rockstar; exact coastlines, roads and pin placements are illustrative. The map's six primary regions are labeled as officially named; the other 18 markers are clearly identified as noncanonical exploration themes. It also offers an outbound link to the detailed fan map at vice-city.app/map, with no asset scraping or embedding.
+- The homepage references the **Official Cover Art**, served from Rockstar Games' published artwork page. Copyright is retained by Rockstar. The previous original skyline remains as a fallback; our GTA 6 branding is unchanged.
+- `/map/` defaults to a high-resolution **community reconstruction** of Leonida, using YANIS/GTADB CC BY 4.0 imagery processed by GTAMI. Zooming progressively requests a 4096px or 8192px map, which includes streets, blocks, building footprints and routes. It is *not* the officially confirmed in-game map. Building interiors, accessible doors and exact layouts cannot be verified before release.
+- The map also includes 771 named community places, derived from GTADB community landmark data, filtered by confidence and category. Pins are community-estimated, not guaranteed exact in-game positions. The default source data is `site/assets/gtadb-landmarks.json` (already committed on GitHub). When packaging without that optional large asset, the map can load the exact current index from the GitHub repository; it falls back to the concept atlas when imagery is unavailable.
+- Map interface supports pointer drag, mouse-wheel and touch-pinch zoom, region shortcuts, place search, category filters, bookmarks, and device-local custom pins, plus a switch back to our original neon concept map.
+- See `source/GTADB_DATA_CREDITS.md` for links, sources, attribution and licensing. The externally hosted map image must remain credited. Third-party map and Rockstar artwork remain the rights of their respective owners.
 
-Run `python source/test_map_inline.py` to smoke-test the atlas with Chromium in a network-restricted environment (the QA harness inlines local assets).
+This is an independent, unofficial fan guide. Map accuracy will need launch-day verification. Do not label the reconstruction as official or a screenshot of the retail game.

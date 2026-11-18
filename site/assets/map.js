@@ -143,7 +143,16 @@
     try{const res=await fetch('/assets/gtadb-landmarks.json',{cache:'force-cache'});if(!res.ok)throw new Error('Map source data unavailable');const raw=await res.json();if(!Array.isArray(raw)||raw.length<20)throw new Error('Map data invalid');
       community=raw.filter(v=>Number.isFinite(v.x)&&Number.isFinite(v.y)&&typeof v.title==='string').map(v=>({...v,kind:'community'}));
       $('#atlas-data-note').textContent=community.length.toLocaleString()+' GTADB/YANIS community-mapped places · pre-release estimate';
-    }catch(err){community=tinyFallback;$('#atlas-data-note').textContent='Detailed community place list unavailable. Explore the map, or open the original GTADB source.';}
+    }catch(err){
+      // Portable ZIP builds can load the exact committed landmark list from GitHub.
+      try{
+        const response=await fetch('https://raw.githubusercontent.com/jeffreyjk1991/gta6-vicebase/main/site/assets/gtadb-landmarks.json');
+        if(!response.ok)throw new Error('GitHub data unavailable');
+        const remote=await response.json();if(!Array.isArray(remote)||remote.length<20)throw new Error('Invalid remote map index');
+        community=remote.filter(v=>Number.isFinite(v.x)&&Number.isFinite(v.y)&&typeof v.title==='string').map(v=>({...v,kind:'community'}));
+        $('#atlas-data-note').textContent=community.length.toLocaleString()+' community-mapped places (verified source copy)';
+      }catch(other){community=tinyFallback;$('#atlas-data-note').textContent='Detailed place index temporarily unavailable. Map zoom still works; explore the original source for more details.';}
+    }
     $('#atlas-total-badge').innerHTML=community.length.toLocaleString()+' <small>COMMUNITY LOCATIONS</small>';filterButtons();drawList();
   }
   activateMode('detailed');loadCommunity();
