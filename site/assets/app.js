@@ -5,9 +5,24 @@
   const menu=$('#mobile-menu'),links=$('#nav-links');
   menu?.addEventListener('click',()=>{const open=links.classList.toggle('open');menu.setAttribute('aria-expanded',String(open));menu.setAttribute('aria-label',open?'Close menu':'Open menu');});
   $$('#nav-links a').forEach(a=>a.addEventListener('click',()=>links?.classList.remove('open')));
-  const launch=new Date(2026,10,19,0,0,0); // Local midnight per Rockstar's regional schedule.
+  // Rockstar describes a regional midnight launch. Major regional storefronts
+  // typically use one release instant per *store country* (US store = 00:00 ET).
+  // Do not use the viewer's wall-clock midnight for the US countdown.
+  const releaseTimes={
+    US:'2026-11-19T05:00:00Z',UK:'2026-11-19T00:00:00Z',
+    EU:'2026-11-18T23:00:00Z',IN:'2026-11-18T18:30:00Z',
+    AU:'2026-11-18T13:00:00Z',NZ:'2026-11-18T11:00:00Z',JP:'2026-11-18T15:00:00Z'
+  };
+  const regionInput=$('#release-region');
+  const langRegion=(navigator.language||'en-US').split('-').at(-1).toUpperCase();
+  const defaultRegion=({GB:'UK',IE:'UK',DE:'EU',FR:'EU',ES:'EU',IT:'EU',NL:'EU',PL:'EU',AU:'AU',NZ:'NZ',IN:'IN',JP:'JP',CA:'US',US:'US'})[langRegion]||'LOCAL';
+  let chosenRegion=defaultRegion;
+  try{const saved=localStorage.getItem('vicebase-store-region');if(saved && (saved in releaseTimes || saved==='LOCAL'))chosenRegion=saved;}catch{}
+  if(regionInput)regionInput.value=chosenRegion;
   const pad=n=>String(n).padStart(2,'0');
   function updateCountdown(){
+    const region=regionInput?.value||chosenRegion;
+    const launch=region==='LOCAL'?new Date(2026,10,19,0,0,0):new Date(releaseTimes[region]||releaseTimes.US);
     const diff=Math.max(0,launch.getTime()-Date.now()),el=$('[data-countdown]');
     const d=Math.floor(diff/86400000),hr=Math.floor(diff%86400000/3600000),m=Math.floor(diff%3600000/60000),sec=Math.floor(diff%60000/1000);
     if(el)el.textContent=diff===0?'OUT NOW':d>0?`${d}D ${hr}H TO GO`:`${hr}H ${m}M TO GO`;
@@ -16,10 +31,13 @@
       const set=(sel,val)=>{const node=$(sel,board);if(node)node.textContent=val;};
       set('[data-count-days]',pad(d));set('[data-count-hours]',pad(hr));set('[data-count-minutes]',pad(m));set('[data-count-seconds]',pad(sec));
       const message=$('[data-release-message]',board);
-      if(message)message.textContent=diff===0?'GTA VI launch day is here. Check your console store to unlock and play.':'November 19, midnight in your local time zone. Your console store shows your official unlock time.';
+      if(message){const tm=launch.toLocaleString(undefined,{weekday:'short',month:'short',day:'numeric',hour:'numeric',minute:'2-digit',timeZoneName:'short'});
+        message.textContent=diff===0?`Estimated launch time reached (${tm}). Check your console store to play.`:`Expected unlock: ${tm}. Your console store countdown is authoritative.`;
+      }
       board.classList.toggle('released',diff===0);
     }
   }
+  regionInput?.addEventListener('change',()=>{chosenRegion=regionInput.value;try{localStorage.setItem('vicebase-store-region',chosenRegion);}catch{}updateCountdown();});
   updateCountdown();setInterval(updateCountdown,1000);
   const buyButtons=$$('[data-buy-platform]');
   if(buyButtons.length){

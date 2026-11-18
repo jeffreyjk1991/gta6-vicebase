@@ -1,6 +1,6 @@
 # ViceBase — GTA VI Resource Hub
 
-A mobile-friendly, neon gaming-themed GTA VI resource website built on static HTML, CSS and vanilla JavaScript. This version contains 36 editorially sourced guides across 8 categories, 52 indexed routes including category and information pages, first-party video links, a live local search index, a PS5/Xbox storage calculator, a download-time estimator, and a saved launch checklist, a live local-midnight launch countdown, and a "Where to Buy" deal desk with manually checked PS5/Xbox storefront prices and 6 money-saving tips.
+A mobile-friendly, neon gaming-themed GTA VI resource website built on static HTML, CSS and vanilla JavaScript. This version contains 36 editorially sourced guides across 8 categories, 52 indexed routes including category and information pages, first-party video links, a live local search index, a PS5/Xbox storage calculator, a download-time estimator, and a saved launch checklist, a live store-region-selectable release countdown, and a "Where to Buy" deal desk with manually checked PS5/Xbox storefront prices and 6 money-saving tips.
 
 **Editorial as-of:** 2026-11-18. The game is scheduled to launch 2026-11-19. Update launch-day articles as soon as actual play can be verified; guides marked `VERIFY AT LAUNCH` are not claims to contain tested gameplay before release.
 
