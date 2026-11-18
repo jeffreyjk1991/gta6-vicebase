@@ -263,7 +263,7 @@ def machine_files():
     from characters import CHARACTERS
     idx.extend({'slug':c['slug'],'href':'/characters/'+c['slug']+'/', 'title':c['name']+' - GTA 6 Character','summary':c['intro'],'category':'Characters', 'aliases':[c['name'],c['region'],c['role'],'GTA VI cast','GTA 6 '+c['name']], 'status':'CONFIRMED'} for c in CHARACTERS)
     (OUT/'assets'/'search-index.json').write_text(json.dumps(idx,ensure_ascii=False,separators=(',',':')),encoding='utf8')
-    (OUT/'robots.txt').write_text('User-agent: *\nAllow: /\n\nUser-agent: OAI-SearchBot\nAllow: /\n\nUser-agent: Googlebot\nAllow: /\n\nUser-agent: Bingbot\nAllow: /\n\nSitemap: '+SITE_URL+'/sitemap.xml\n',encoding='utf8')
+    (OUT/'robots.txt').write_text('User-agent: *\nAllow: /\n\nUser-agent: OAI-SearchBot\nAllow: /\n\nUser-agent: Googlebot\nAllow: /\n\nUser-agent: Bingbot\nAllow: /\n\nUser-agent: PerplexityBot\nAllow: /\n\nUser-agent: Claude-SearchBot\nAllow: /\n\nUser-agent: Claude-User\nAllow: /\n\nSitemap: '+SITE_URL+'/sitemap.xml\n',encoding='utf8')
     sm='<?xml version="1.0" encoding="utf-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+''.join('<url><loc>'+xh(uri(p))+'</loc><lastmod>'+UPDATED+'</lastmod></url>' for p in URLS)+'</urlset>'
     (OUT/'sitemap.xml').write_text(sm,encoding='utf8')
     write('404.html',page('Guide not found | GTASIX','The resource you requested could not be found.',page_intro('Wrong exit.','This guide is not available yet. Try the GTA VI library instead.',[('404','/guides/')])+'<main class="wrap info-page"><a href="/guides/" class="btn">SEARCH ALL GUIDES →</a></main>','', '/404.html'),False)
