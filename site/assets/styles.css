@@ -15,3 +15,11 @@
 
 /* Store-region-specific launch clock (US listings use Eastern midnight) */
 .countdown-heading{flex-wrap:wrap}.release-select-label{font:700 9px 'Space Mono',monospace;letter-spacing:.04em;margin-left:auto;color:#b6a8be}.release-region{border:1px solid #775771;background:#251d30;border-radius:5px;color:#ffe4d9;padding:5px 7px;font:700 10px 'Space Mono',monospace;max-width:190px}.release-region:focus{outline:2px solid #ff9c9c}.countdown-board p{line-height:1.5}@media(max-width:520px){.release-select-label{margin-left:0}.release-region{max-width:100%;flex:1;min-width:140px;font-size:9px}}
+
+
+/* Official GTA VI cover illustration in the original sunset hero position.
+   Rockstar artwork is displayed from Rockstar's published promotional image URL.
+   The locally drawn skyline is the fallback, if the remote image is unavailable. */
+.hero{background-image:linear-gradient(90deg,#0c0e15 0%,#0c0e15ed 30%,#0c0e15af 53%,#0c0e1575 100%),url("https://www.rockstargames.com/VI/_next/static/media/Official_Cover_Art_landscape.12.uu2irr.2_a.jpg?akim=1&imdensity=1&imwidth=1920"),url("/assets/vice-skyline.svg");background-position:center,74% center,65% center;background-size:cover,cover,cover;background-repeat:no-repeat}
+.hero-art-credit{position:absolute;right:max(3vw,20px);bottom:18px;z-index:3;color:#fff9;font:700 9px/1.5 'Space Mono',monospace;letter-spacing:.04em;text-shadow:0 1px 5px #000a;text-align:right;pointer-events:none}
+@media(max-width:750px){.hero{background-image:linear-gradient(90deg,#0c0e15f2 0%,#0c0e15cf 59%,#0c0e15a9 100%),url("https://www.rockstargames.com/VI/_next/static/media/Official_Cover_Art_landscape.12.uu2irr.2_a.jpg?akim=1&imdensity=1&imwidth=1920"),url("/assets/vice-skyline.svg");background-position:center,72% center,63% center;background-size:cover,auto 100%,cover}.hero-art-credit{font-size:7px;bottom:10px;right:12px;max-width:195px}}
