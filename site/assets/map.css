@@ -52,8 +52,8 @@
 .atlas-viewport.grabbing{cursor:grabbing}
 .atlas-world{position:absolute;left:0;top:0;width:1400px;height:1000px;transform-origin:top left;will-change:transform;user-select:none}
 .atlas-world>img{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;max-width:none;user-select:none}
-.atlas-pins{position:absolute;inset:0}
-.atlas-pin{position:absolute;z-index:3;transform:translate(-50%,-50%);display:flex;align-items:center;gap:5px;padding:0;background:none;border:0;cursor:pointer;white-space:nowrap;transition:filter .14s}
+.atlas-pins{position:absolute;inset:0;pointer-events:none;z-index:2}
+.atlas-pin{position:absolute;z-index:3;transform:translate(-50%,-50%) scale(var(--atlas-inverse-scale,1));transform-origin:center center;pointer-events:auto;display:flex;align-items:center;gap:5px;padding:0;background:none;border:0;cursor:pointer;white-space:nowrap;transition:filter .14s}
 .atlas-pin[hidden]{display:none}
 .atlas-pin-dot{min-width:19px;height:19px;border:2px solid #161b2a;border-radius:50% 50% 50% 6px;transform:rotate(-45deg);background:#f68b9d;box-shadow:0 3px 12px #0a1025,0 0 17px #ff82b965;display:grid;place-items:center;color:#fff;line-height:1;font-size:9px}
 .atlas-pin-dot::first-letter{transform:rotate(45deg)}
@@ -191,3 +191,10 @@
 @media(min-width:1101px){.atlas-shell{grid-template-columns:310px minmax(0,1fr)}}
 @media(max-width:760px){.atlas-stage{min-height:660px}.atlas-map-hud{top:13px;left:10px}.atlas-view-toggle{top:73px;left:10px;right:auto;padding:3px}.atlas-view-toggle button{font-size:8px;padding:7px 10px}.atlas-map-controls{top:140px;right:11px}.atlas-data-note{margin:0 17px 14px}}
 @media(max-width:520px){.atlas-stage{min-height:590px}.atlas-map-hud>div{padding:8px 10px}.map-hud-name{font-size:22px}.atlas-map-hud small{font-size:7px}.atlas-view-toggle{top:71px}.atlas-hint{display:none}.atlas-pin-form{top:126px}}
+
+/* Pan and zoom one shared map coordinate system. Markers stay screen-sized, but never detach from the map artwork. */
+.atlas-viewport{overscroll-behavior:contain;-webkit-user-select:none;user-select:none}
+.atlas-viewport .atlas-world,.atlas-viewport .atlas-pins{touch-action:none}
+.atlas-viewport:focus-visible{outline:2px solid #ff99ac;outline-offset:-3px}
+.atlas-map-controls button{touch-action:manipulation}
+@media(max-width:650px){.atlas-map-controls button{width:44px;height:44px}}

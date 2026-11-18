@@ -3,8 +3,17 @@
   const $=(selector,root=document)=>root.querySelector(selector);
   const $$=(selector,root=document)=>Array.from(root.querySelectorAll(selector));
   const menu=$('#mobile-menu'),links=$('#nav-links');
-  menu?.addEventListener('click',()=>{const open=links.classList.toggle('open');menu.setAttribute('aria-expanded',String(open));menu.setAttribute('aria-label',open?'Close menu':'Open menu');});
-  $$('#nav-links a').forEach(a=>a.addEventListener('click',()=>links?.classList.remove('open')));
+  function setMenu(open){
+    if(!menu||!links)return;
+    links.classList.toggle('open',open);
+    menu.setAttribute('aria-expanded',String(open));
+    menu.setAttribute('aria-label',open?'Close menu':'Open menu');
+  }
+  menu?.addEventListener('click',()=>setMenu(!links.classList.contains('open')));
+  $$('#nav-links a').forEach(a=>a.addEventListener('click',()=>setMenu(false)));
+  document.addEventListener('pointerdown',e=>{if(links?.classList.contains('open')&&!links.contains(e.target)&&!menu?.contains(e.target))setMenu(false);});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&links?.classList.contains('open')){setMenu(false);menu?.focus();}});
+  window.addEventListener('resize',()=>{if(innerWidth>750&&links?.classList.contains('open'))setMenu(false);});
   // Rockstar describes a regional midnight launch. Major regional storefronts
   // typically use one release instant per *store country* (US store = 00:00 ET).
   // Do not use the viewer's wall-clock midnight for the US countdown.
@@ -61,10 +70,10 @@
       try{
         const data=await allGuides();if(input.value.trim()!==q)return;
         matches=data.map(a=>({...a,score:score(a,q)})).filter(x=>x.score>0).sort((a,b)=>b.score-a.score).slice(0,6);
-        if(results){results.replaceChildren();if(!matches.length){const p=document.createElement('p');p.className='search-empty';p.textContent='No exact guide yet. Try “storage”, “preload” or “PS5”.';results.append(p);}else{matches.forEach(a=>{const link=document.createElement('a');link.href='/guides/'+a.slug+'/';link.className='search-item';const block=document.createElement('span'),cat=document.createElement('span'),ttl=document.createElement('span');cat.className='search-cat';cat.textContent=a.category;ttl.className='search-title';ttl.textContent=a.title;block.append(cat,ttl);link.append(block);results.append(link);});}results.classList.add('open');}
+        if(results){results.replaceChildren();if(!matches.length){const p=document.createElement('p');p.className='search-empty';p.textContent='No exact guide yet. Try “storage”, “preload” or “PS5”.';results.append(p);}else{matches.forEach(a=>{const link=document.createElement('a');link.href=a.href||'/guides/'+a.slug+'/';link.className='search-item';const block=document.createElement('span'),cat=document.createElement('span'),ttl=document.createElement('span');cat.className='search-cat';cat.textContent=a.category;ttl.className='search-title';ttl.textContent=a.title;block.append(cat,ttl);link.append(block);results.append(link);});}results.classList.add('open');}
       }catch(err){hide();}
     });
-    input.addEventListener('keydown',e=>{if(e.key==='Escape')hide();if(e.key==='Enter'&&matches[0]&&input.value.trim().length>=2){e.preventDefault();location.href='/guides/'+matches[0].slug+'/';}});
+    input.addEventListener('keydown',e=>{if(e.key==='Escape')hide();if(e.key==='Enter'&&matches[0]&&input.value.trim().length>=2){e.preventDefault();location.href=matches[0].href||'/guides/'+matches[0].slug+'/';}});
     document.addEventListener('click',e=>{if(!container.contains(e.target))hide();});
   });
   const searchForm=$('#search-form');searchForm?.addEventListener('submit',e=>{e.preventDefault();const q=$('.site-search',searchForm)?.value.trim()||'';location.href=q?'/guides/?q='+encodeURIComponent(q):'/guides/';});

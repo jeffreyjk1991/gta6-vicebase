@@ -18,7 +18,7 @@
   };
   const names={hotel:'HOTELS & STAYS',shop:'SHOPS & SERVICES',transport:'TRANSPORT',food:'FOOD & NIGHTLIFE',nature:'NATURE',landmark:'LANDMARKS',region:'ROCKSTAR-NAMED REGION',custom:'PERSONAL PIN'};
   let community=[],personal=[],mode='detailed',filterMode='all',query='',selected=null;
-  let W=4096,H=5698,scale=1,x=0,y=0,fitScale=.1,zoomFrame=0,addPin=false,pinAt=null,imageLoaded=false,highLoaded=false;
+  let W=4096,H=5698,scale=1,x=0,y=0,fitScale=.1,zoomFrame=0,pinTimer=0,addPin=false,pinAt=null,imageLoaded=false,highLoaded=false;
   const bookmarks=new Set();
   try{const v=JSON.parse(localStorage.getItem('vicebase-atlas-bookmarks-v1')||'[]');if(Array.isArray(v))v.filter(q=>typeof q==='string').forEach(q=>bookmarks.add(q));}catch{}
   try{const v=JSON.parse(localStorage.getItem('vicebase-private-pins-v1')||'[]');if(Array.isArray(v))personal=v.filter(p=>p&&typeof p.title==='string'&&Number.isFinite(p.x)&&Number.isFinite(p.y)).slice(0,150).map(p=>({...p,kind:'custom',cat:'custom'}));}catch{}
@@ -29,8 +29,27 @@
   function visibleItems(){return items().filter(match);}
   function updateSaved(){const v=$('[data-atlas-saved]');if(v)v.textContent=bookmarks.size+' saved place'+(bookmarks.size===1?'':'s')+' / '+personal.length+' personal pin'+(personal.length===1?'':'s');}
   function pxToWorld(px,py){return {x:(px-x)/scale,y:(py-y)/scale};}
-  function position(){world.style.transform=`translate3d(${x}px,${y}px,0) scale(${scale})`;const hud=$('#atlas-zoom-readout');if(hud)hud.textContent='ZOOM '+(scale/fitScale).toFixed(1)+'X / '+(mode==='concept'?'ILLUSTRATED':'COMMUNITY MAP');schedulePins();maybeUpgradeImage();}
-  function schedulePins(){if(zoomFrame)return;zoomFrame=requestAnimationFrame(()=>{zoomFrame=0;drawPins();});}
+  function constrainCamera(){
+    const vw=vp.clientWidth,vh=vp.clientHeight,sw=W*scale,sh=H*scale;
+    // Google Maps style: stay within the map, with a small elastic margin at the edges.
+    x=sw<=vw?(vw-sw)/2:clamp(x,vw-sw-72,72);
+    y=sh<=vh?(vh-sh)/2:clamp(y,vh-sh-72,72);
+  }
+  function position(){
+    constrainCamera();
+    // Both artwork and markers live INSIDE this same composited world element.
+    world.style.setProperty('--atlas-inverse-scale',String(1/scale));
+    world.style.transform=`translate3d(${x}px,${y}px,0) scale(${scale})`;
+    const hud=$('#atlas-zoom-readout');
+    if(hud)hud.textContent='ZOOM '+(scale/fitScale).toFixed(1)+'X / '+(mode==='concept'?'ILLUSTRATED':'COMMUNITY MAP');
+    schedulePins();maybeUpgradeImage();
+  }
+  function schedulePins(){
+    // Pin rendering is throttled during gestures; the already-rendered pins follow
+    // the map instantly because they share its transform (no visual drift).
+    if(pinTimer||zoomFrame)return;
+    pinTimer=setTimeout(()=>{pinTimer=0;zoomFrame=requestAnimationFrame(()=>{zoomFrame=0;drawPins();});},75);
+  }
   function recenter(wx,wy,nextScale=scale){scale=clamp(nextScale,fitScale*.8,mode==='detailed'?2.1:3.5);x=vp.clientWidth/2-wx*scale;y=vp.clientHeight/2-wy*scale;position();}
   function reset(){fitScale=Math.max(.018,Math.min((vp.clientWidth-16)/W,(vp.clientHeight-16)/H));recenter(W/2,H/2,fitScale*(mode==='detailed'?1.04:1.1));}
   function zoom(factor,px=vp.clientWidth/2,py=vp.clientHeight/2){const next=clamp(scale*factor,fitScale*.8,mode==='detailed'?2.1:3.5);const ref=pxToWorld(px,py);scale=next;x=px-ref.x*scale;y=py-ref.y*scale;position();}
@@ -71,7 +90,12 @@
     $('#atlas-delete-custom').hidden=item.kind!=='custom';
     const btn=$('#atlas-bookmark');btn.textContent=bookmarks.has(item.id)?'SAVED / REMOVE':'SAVE PLACE';btn.setAttribute('aria-pressed',String(bookmarks.has(item.id)));
     $('#atlas-pin-form').hidden=true;$('#atlas-detail').hidden=false;
-    if(focus)focusItem(item);
+    if(focus){
+      focusItem(item);
+      // On small screens the results panel is below the map: a result must
+      // bring the actual map into view, not just move an off-screen camera.
+      if(window.innerWidth<=760)vp.scrollIntoView({block:'center',behavior:'smooth'});
+    }
     drawList();schedulePins();
   }
   function drawList(){
@@ -103,7 +127,7 @@
       if(rendered++>170)break;
       const {item,sx,sy,count}=cell;
       const btn=document.createElement('button');btn.type='button';btn.className='atlas-pin '+item.cat+(item.kind==='community'?' community':item.kind==='custom'?' custom':item.official?' official':' illustrative')+(selected?.id===item.id?' is-active':'');
-      btn.style.left=sx+'px';btn.style.top=sy+'px';btn.title=count>1?count+' community locations (zoom in)':item.title;btn.setAttribute('aria-label',count>1?'Zoom into '+count+' locations':'Open '+item.title);
+      btn.style.left=item.x+'px';btn.style.top=item.y+'px';btn.title=count>1?count+' community locations (zoom in)':item.title;btn.setAttribute('aria-label',count>1?'Zoom into '+count+' locations':'Open '+item.title);
       const dot=document.createElement('span');dot.className='atlas-pin-dot';dot.textContent=count>1?String(Math.min(count,99)):(item.official?'◆':'•');
       const label=document.createElement('span');label.className='atlas-pin-label';label.textContent=item.title.toUpperCase();btn.append(dot,label);
       if(count>1){btn.classList.add('atlas-cluster');btn.addEventListener('click',e=>{e.stopPropagation();zoom(1.65,sx,sy);});}
@@ -127,11 +151,60 @@
   $('#atlas-pin-cancel').addEventListener('click',()=>{$('#atlas-pin-form').hidden=true;});
   $('#atlas-pin-form').addEventListener('submit',e=>{e.preventDefault();const title=$('#atlas-pin-name').value.trim().slice(0,70);if(!title||!pinAt)return;const item={id:'private-'+Date.now(),title,subtitle:'Personal map annotation',description:'Your own marked spot.',x:clamp(pinAt.x,0,W),y:clamp(pinAt.y,0,H),cat:'custom',kind:'custom'};personal.push(item);save();$('#atlas-pin-form').hidden=true;filterMode='all';filterButtons();showDetail(item,false);});
   vp.addEventListener('wheel',e=>{e.preventDefault();const r=vp.getBoundingClientRect();zoom(e.deltaY<0?1.23:1/1.23,e.clientX-r.left,e.clientY-r.top);},{passive:false});
-  const points=new Map();let drag=null,pinchDist=null,moved=false;
-  vp.addEventListener('pointerdown',e=>{if(e.target.closest('button'))return;vp.setPointerCapture(e.pointerId);points.set(e.pointerId,{x:e.clientX,y:e.clientY});if(points.size===1){drag={startX:e.clientX,startY:e.clientY,x,y};moved=false;vp.classList.add('grabbing');}else{drag=null;const arr=[...points.values()];pinchDist=Math.hypot(arr[0].x-arr[1].x,arr[0].y-arr[1].y);}});
-  vp.addEventListener('pointermove',e=>{if(!points.has(e.pointerId))return;points.set(e.pointerId,{x:e.clientX,y:e.clientY});if(points.size===2){const arr=[...points.values()],d=Math.hypot(arr[0].x-arr[1].x,arr[0].y-arr[1].y);if(pinchDist){const r=vp.getBoundingClientRect();zoom(d/pinchDist,(arr[0].x+arr[1].x)/2-r.left,(arr[0].y+arr[1].y)/2-r.top);}pinchDist=d;moved=true;}else if(drag){if(Math.hypot(e.clientX-drag.startX,e.clientY-drag.startY)>6)moved=true;x=drag.x+e.clientX-drag.startX;y=drag.y+e.clientY-drag.startY;position();}});
-  function pointerEnd(e){if(points.has(e.pointerId)&&!moved&&addPin){const r=vp.getBoundingClientRect();showPinForm(pxToWorld(e.clientX-r.left,e.clientY-r.top));}points.delete(e.pointerId);drag=null;pinchDist=null;vp.classList.remove('grabbing');}
-  vp.addEventListener('pointerup',pointerEnd);vp.addEventListener('pointercancel',pointerEnd);vp.addEventListener('lostpointercapture',e=>{points.delete(e.pointerId);drag=null;pinchDist=null;vp.classList.remove('grabbing');});
+  const points=new Map();let pan=null,pinch=null,moved=false,lastTap=null;
+  function setupPan(point){pan={startX:point.x,startY:point.y,offsetX:x,offsetY:y};pinch=null;}
+  function setupPinch(){
+    if(points.size<2)return;
+    const [a,b]=[...points.values()];const r=vp.getBoundingClientRect();
+    const cx=(a.x+b.x)/2-r.left,cy=(a.y+b.y)/2-r.top;
+    pinch={distance:Math.max(12,Math.hypot(a.x-b.x,a.y-b.y)),startScale:scale,anchor:pxToWorld(cx,cy)};
+    pan=null;moved=true;
+  }
+  vp.addEventListener('pointerdown',e=>{
+    if(e.target.closest('button'))return;
+    if(e.pointerType==='mouse'&&e.button!==0)return;
+    vp.setPointerCapture(e.pointerId);
+    points.set(e.pointerId,{x:e.clientX,y:e.clientY});
+    if(points.size===1){setupPan(points.get(e.pointerId));moved=false;vp.classList.add('grabbing');}
+    else if(points.size===2)setupPinch();
+  });
+  vp.addEventListener('pointermove',e=>{
+    if(!points.has(e.pointerId))return;
+    points.set(e.pointerId,{x:e.clientX,y:e.clientY});
+    if(points.size>=2){
+      if(!pinch)setupPinch();
+      const [a,b]=[...points.values()];const r=vp.getBoundingClientRect();
+      const distance=Math.max(12,Math.hypot(a.x-b.x,a.y-b.y));
+      const cx=(a.x+b.x)/2-r.left,cy=(a.y+b.y)/2-r.top;
+      scale=clamp(pinch.startScale*distance/pinch.distance,fitScale*.8,mode==='detailed'?2.1:3.5);
+      x=cx-pinch.anchor.x*scale;y=cy-pinch.anchor.y*scale;
+      moved=true;position();
+    }else if(pan){
+      const dx=e.clientX-pan.startX,dy=e.clientY-pan.startY;
+      if(Math.hypot(dx,dy)>5)moved=true;
+      x=pan.offsetX+dx;y=pan.offsetY+dy;position();
+    }
+  });
+  function pointerEnd(e){
+    if(!points.has(e.pointerId))return;
+    if(!moved&&e.type==='pointerup'){
+      const r=vp.getBoundingClientRect();const px=e.clientX-r.left,py=e.clientY-r.top;
+      if(addPin){showPinForm(pxToWorld(px,py));}
+      else if(e.pointerType==='touch'){
+        const now=performance.now();
+        if(lastTap&&now-lastTap.time<320&&Math.hypot(lastTap.x-px,lastTap.y-py)<30){zoom(1.65,px,py);lastTap=null;}
+        else lastTap={time:now,x:px,y:py};
+      }
+    }
+    points.delete(e.pointerId);
+    if(points.size===1){setupPan([...points.values()][0]);moved=true;}
+    else{pan=null;pinch=null;vp.classList.remove('grabbing');}
+    schedulePins();
+  }
+  vp.addEventListener('pointerup',pointerEnd);
+  vp.addEventListener('pointercancel',pointerEnd);
+  vp.addEventListener('lostpointercapture',e=>{if(points.has(e.pointerId)){points.delete(e.pointerId);pan=null;pinch=null;vp.classList.remove('grabbing');}});
+  vp.addEventListener('dblclick',e=>{if(e.target.closest('button'))return;e.preventDefault();if(addPin)return;const r=vp.getBoundingClientRect();zoom(1.65,e.clientX-r.left,e.clientY-r.top);});
   vp.addEventListener('keydown',e=>{if(['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','+','-','Escape','0'].includes(e.key))e.preventDefault();if(e.key==='ArrowLeft')x+=70;else if(e.key==='ArrowRight')x-=70;else if(e.key==='ArrowUp')y+=70;else if(e.key==='ArrowDown')y-=70;else if(e.key==='+')zoom(1.25);else if(e.key==='-')zoom(.8);else if(e.key==='0')reset();else if(e.key==='Escape')closeDetail();position();});
   document.addEventListener('keydown',e=>{if(e.key==='/'&&!['INPUT','TEXTAREA','SELECT'].includes(document.activeElement?.tagName||'')){e.preventDefault();search.focus();}});
   const tinyFallback=[
