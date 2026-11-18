@@ -56,7 +56,7 @@ def write(path,text,index=True):
     if index and url.endswith('/'): URLS.append(url)
     return full
 
-def brand():return f'<a href="/" class="brand" aria-label="GTASIX home"><span class="brand-icon"><b>6</b></span><span><span class="brand-word">GTA<em>SIX</em></span><span class="brand-sub">GTASIX.TECH / GTA VI FAN GUIDE</span></span><span class="brand-gta6">GTA <b>6</b></span></a>'
+def brand():return f'<a href="/" class="brand" aria-label="GTASIX home"><span class="brand-icon"><b>6</b></span><span><span class="brand-word">GTA<em>SIX</em></span><span class="brand-sub">GTASIX.TECH / GTA VI FAN GUIDE</span></span></a>'
 
 def header(active=''):
     nav=[('GUIDES','/guides/','guides'),('GTA 6 MAP','/map/','map'),('CHARACTERS','/characters/','characters'),('BUY / DEALS','/buy/','buy'),('VIDEOS','/videos/','videos'),('TOOLS','/tools/','tools')]
