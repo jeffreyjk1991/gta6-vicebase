@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 790" preserveAspectRatio="xMidYMid slice">
+ <defs>
+  <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#091528"/><stop offset=".27" stop-color="#30204f"/><stop offset=".55" stop-color="#a44f78"/><stop offset=".74" stop-color="#f7a268"/><stop offset="1" stop-color="#172235"/></linearGradient>
+  <radialGradient id="sun"><stop stop-color="#ffe3a7"/><stop offset=".66" stop-color="#ffb66d"/><stop offset="1" stop-color="#ff806e" stop-opacity=".25"/></radialGradient>
+  <linearGradient id="water" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#8f5a80"/><stop offset=".3" stop-color="#283251"/><stop offset="1" stop-color="#080f1e"/></linearGradient>
+  <linearGradient id="road" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#242036"/><stop offset="1" stop-color="#070d15"/></linearGradient>
+  <linearGradient id="neon" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#ff7769"/><stop offset="1" stop-color="#b855dd"/></linearGradient>
+  <filter id="glow"><feGaussianBlur stdDeviation="22"/></filter>
+ </defs>
+ <rect width="1200" height="790" fill="url(#sky)"/>
+ <ellipse cx="795" cy="378" rx="172" ry="172" fill="url(#sun)" opacity=".86"/>
+ <ellipse cx="795" cy="378" rx="205" ry="205" fill="#ffc38c" opacity=".13" filter="url(#glow)"/>
+ <g fill="#1a1c38" opacity=".44"><rect x="2" y="330" width="90" height="170"/><rect x="86" y="285" width="85" height="215"/><rect x="178" y="354" width="100" height="146"/><rect x="280" y="320" width="66" height="180"/><rect x="355" y="289" width="70" height="210"/><rect x="432" y="360" width="88" height="145"/><rect x="523" y="313" width="68" height="190"/><rect x="599" y="337" width="80" height="168"/><rect x="920" y="340" width="81" height="161"/><rect x="1010" y="285" width="70" height="210"/><rect x="1090" y="330" width="98" height="175"/></g>
+ <g fill="#121a2e"><rect x="0" y="404" width="130" height="150"/><rect x="135" y="371" width="74" height="183"/><rect x="216" y="414" width="115" height="139"/><rect x="342" y="350" width="92" height="202"/><rect x="445" y="397" width="72" height="158"/><rect x="530" y="373" width="98" height="181"/><rect x="638" y="420" width="90" height="138"/><rect x="742" y="393" width="90" height="164"/><rect x="853" y="407" width="125" height="154"/><rect x="986" y="363" width="85" height="188"/><rect x="1080" y="420" width="115" height="140"/></g>
+ <g fill="#e59b9b" opacity=".8">
+  <rect x="159" y="388" width="4" height="11"/><rect x="171" y="388" width="4" height="11"/><rect x="183" y="388" width="4" height="11"/><rect x="355" y="364" width="5" height="12"/><rect x="372" y="364" width="5" height="12"/><rect x="391" y="364" width="5" height="12"/><rect x="405" y="364" width="5" height="12"/><rect x="554" y="403" width="6" height="12"/><rect x="574" y="403" width="6" height="12"/><rect x="594" y="403" width="6" height="12"/><rect x="614" y="403" width="6" height="12"/><rect x="998" y="380" width="6" height="10"/><rect x="1017" y="380" width="6" height="10"/><rect x="1036" y="380" width="6" height="10"/>
+ </g>
+ <rect y="552" width="1200" height="238" fill="url(#water)"/>
+ <g stroke="#f5b382" opacity=".3"><path d="M0 576Q270 558 550 577T1200 574"/><path d="M0 602Q170 586 450 599T1200 601"/><path d="M0 635Q260 622 600 639T1200 634"/><path d="M0 682Q250 665 530 680T1200 687"/></g>
+ <path d="M530 542L615 542 1195 790 0 790Z" fill="url(#road)"/>
+ <path d="M530 542L0 790" stroke="#ee7290" stroke-width="4" opacity=".8"/><path d="M615 542L1195 790" stroke="#ffbd6e" stroke-width="3" opacity=".8"/>
+ <path d="M571 565L565 590 M568 605L553 640 M562 660L537 733" stroke="#fbc583" stroke-width="5" stroke-linecap="round" stroke-dasharray="18 22" opacity=".65"/>
+ <g fill="none" stroke="#0d1828" stroke-width="15" stroke-linecap="round"><path d="M105 729Q102 502 142 230"/><path d="M1042 719Q1041 450 1000 209"/></g>
+ <g fill="#0e1826">
+  <path d="M142 230Q82 183 22 202Q90 199 139 251Q46 233 9 261Q86 254 144 264Q84 267 65 325Q117 292 149 267Q167 212 242 183Q177 190 143 251Q235 223 273 242Q206 232 153 266Q205 259 234 322Q182 276 148 265Z"/>
+  <path d="M1000 209Q942 163 873 175Q958 186 1000 231Q918 221 854 255Q940 245 998 251Q919 265 898 324Q956 283 1002 255Q1031 199 1094 169Q1031 183 1005 229Q1085 202 1175 229Q1087 228 1009 254Q1089 259 1122 323Q1068 280 1005 254Z"/>
+ </g>
+ <g opacity=".87"><rect x="323" y="449" width="137" height="62" rx="6" fill="#18243b" stroke="#f08bca" stroke-width="2"/><text x="392" y="476" text-anchor="middle" font-size="16" fill="#f5accb" font-family="monospace" letter-spacing="3">VICE CITY</text><text x="392" y="496" text-anchor="middle" font-size="10" fill="#ffbc99" font-family="monospace" letter-spacing="3">NEXT EXIT</text></g>
+ <g opacity=".18" fill="#fff"><circle cx="85" cy="102" r="2"/><circle cx="542" cy="74" r="1.6"/><circle cx="1130" cy="155" r="2"/><circle cx="705" cy="102" r="1.5"/><circle cx="309" cy="153" r="1"/></g>
+</svg>

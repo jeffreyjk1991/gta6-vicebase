@@ -1,0 +1,15 @@
+{
+  "name": "VICEBASE \u2014 GTA 6 Guides",
+  "short_name": "VICEBASE",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0c0e15",
+  "theme_color": "#0c0e15",
+  "icons": [
+    {
+      "src": "/assets/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
