@@ -10,4 +10,13 @@ Allow: /
 User-agent: Bingbot
 Allow: /
 
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
 Sitemap: https://gtasix.tech/sitemap.xml
