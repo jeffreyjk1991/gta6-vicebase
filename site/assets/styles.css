@@ -52,3 +52,6 @@
 .fact-block{border:1px solid rgba(177,190,222,.18);border-radius:12px;padding:20px;background:rgba(22,28,48,.55)}
 .fact-block p{margin:12px 0;font-size:1rem;line-height:1.7}.fact-block a{font-size:.85rem;font-weight:750;color:#f0adc9;text-decoration:underline;text-underline-offset:4px}
 @media(max-width:640px){.facts-grid{grid-template-columns:1fr}.seo-extra{padding:16px}.seo-table{font-size:.88em}}
+
+/* GTASIX header: hide the redundant legacy GTA 6 badge on every page. */
+.site-header .brand-gta6{display:none!important}
