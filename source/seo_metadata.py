@@ -6,13 +6,17 @@ content visible on each page, and search rankings cannot be guaranteed.
 import re
 
 TITLE_OVERRIDES = {
-    '/': 'GTA 6 Guides, Map, Characters & Gameplay | GTASIX',
+    '/guides/gta-6-how-to-save/': 'How to Save in GTA 6: Autosave & 15 Slots | GTASIX',
+    '/guides/gta-6-how-to-switch-characters/': 'GTA 6: How to Switch Jason & Lucia | GTASIX',
+    '/guides/gta-6-jason-lucia-voice-actors/': 'GTA 6 Voice Actors: Jason, Lucia & Cast | GTASIX',
+    '/guides/gta-6-reviews-scores/': 'GTA 6 Reviews: Metacritic Score & Verdict | GTASIX',
+    '/': 'GTA 6 Guides: Saves, Cheats, Map & Settings | GTASIX',
     '/map/': 'GTA 6 Map: Detailed Leonida & Vice City | GTASIX',
     '/characters/': 'GTA 6 Characters: Jason, Lucia & More | GTASIX',
     '/buy/': 'Where to Buy GTA 6: PS5 & Xbox Prices | GTASIX',
     '/videos/': 'Official GTA 6 Trailers & Gameplay Videos | GTASIX',
     '/tools/': 'GTA 6 Storage Calculator & Download Timer | GTASIX',
-    '/guides/': 'GTA 6 Guides: Settings, Gameplay & Map | GTASIX',
+    '/guides/': 'GTA 6 Guides: Saves, Cheats, Map & Settings | GTASIX',
     '/guides/gta-6-best-settings/': 'GTA 6 Best Settings: PS5, Xbox, Controls & Camera | GTASIX',
     '/gta-6-facts/': 'GTA 6 Confirmed Facts: Launch, Map & Cast | GTASIX',
     '/guides/gta-6-download-size-ps5-xbox/': 'GTA 6 Download Size: PS5 & Xbox Storage | GTASIX',
@@ -30,7 +34,11 @@ TITLE_OVERRIDES = {
 }
 
 META_OVERRIDES = {
-    '/': 'GTA 6 maps, best PS5 and Xbox gameplay settings, guides, characters, official videos, storage fixes, walkthroughs and game tools in one place.',
+    '/guides/gta-6-how-to-save/': 'How to save GTA 6 on PS5 and Xbox: 15 manual save slots, autosave, and why Save Game is greyed out during missions.',
+    '/guides/gta-6-how-to-switch-characters/': 'GTA 6 controls for switching Jason and Lucia on PS5 and Xbox, when the Partner Menu unlocks, and why swapping is unavailable.',
+    '/guides/gta-6-jason-lucia-voice-actors/': 'GTA 6 voice actor confirmations: Dylan Rourke as Jason, Manni L. Perez as Lucia, and Stephen Root as Brian.',
+    '/guides/gta-6-reviews-scores/': 'GTA 6 reviews and ratings: dated November 19 Metacritic 99/100 report, critic impressions, and current review links.',
+    '/': 'GTA 6 launch guides: saving progress, switching characters, cheat codes, reviews, voice actors, gameplay settings and the Leonida map.',
     '/map/': 'Explore the GTA 6 Leonida and Vice City community map with street-level zoom, location search and saved pins. Unofficial reconstruction, clearly labeled.',
     '/characters/': 'Meet GTA 6 characters Jason Duval, Lucia Caminos, Cal Hampton and more. Read verified backgrounds, connections and official Rockstar sources.',
     '/buy/': 'Compare GTA 6 PS5 and Xbox retailer listings, Standard and Ultimate editions, legitimate discounts and code-in-box warnings. Prices are dated snapshots.',
