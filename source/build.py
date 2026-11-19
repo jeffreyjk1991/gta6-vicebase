@@ -229,7 +229,7 @@ def article_page(a):
     supplement=extra_sections(a['slug'])
     if a['slug']=='gta-6-best-settings':
         supplement=(BASE/'source'/'settings-widget.html').read_text(encoding='utf8')+supplement
-    warning='' if status=='CONFIRMED' else f'<div class="note-box"><strong>LAUNCH VERIFICATION REQUIRED.</strong> This is a preparation or methodology guide, not a claim to have tested GTA VI gameplay before its November 19 launch. We will add only reproducible in-game details.</div>'
+    warning='' if status=='CONFIRMED' else (f'<div class="note-box"><strong>ATTRIBUTED REPORTING.</strong> This guide summarizes third-party sources; GTASIX has not independently tested each input or game setting. Consult the originals for updates.</div>' if a['slug'] in ('gta-6-cheat-codes','gta-6-how-to-save','gta-6-how-to-switch-characters','gta-6-reviews-scores') else f'<div class="note-box"><strong>VERIFICATION NOTE.</strong> This guide contains preparation or details not independently tested by GTASIX.</div>')
     steps=''.join(f'<div class="step"><span class="step-num">{i:02}</span><p>{h(v)}</p></div>' for i,v in enumerate(a['steps'],1))
     faqs=''.join(f'<details class="faq"><summary>{h(q)}</summary><p>{h(answer)}</p></details>' for q,answer in a['faqs'])
     side=''.join(f'<a href="/guides/{r["slug"]}/">{h(r["title"])}</a>' for r in related)

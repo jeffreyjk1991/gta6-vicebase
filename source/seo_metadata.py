@@ -22,10 +22,10 @@ TITLE_OVERRIDES = {
     '/guides/gta-6-download-size-ps5-xbox/': 'GTA 6 Download Size: PS5 & Xbox Storage | GTASIX',
     '/guides/best-ps5-ssd-requirements-for-gta-6/': 'Best PS5 SSD Specs for GTA 6 | GTASIX',
     '/guides/gta-6-pc-release-system-requirements/': 'GTA 6 PC Release & Requirements: What Is Known | GTASIX',
-    '/guides/gta-6-release-date-and-time/': 'GTA 6 Release Date & Unlock Times | GTASIX',
+    '/guides/gta-6-release-date-and-time/': 'GTA 6 Out Now: Release Date & Platforms | GTASIX',
     '/guides/gta-6-console-performance-fps/': 'GTA 6 FPS & Console Performance: Confirmed | GTASIX',
     '/guides/gta-6-leonida-vice-city-map/': 'GTA 6 Map: Leonida Regions Explained | GTASIX',
-    '/guides/gta-6-cheat-codes/': 'GTA 6 Cheat Codes: Verified Status | GTASIX',
+    '/guides/gta-6-cheat-codes/': 'GTA 6 Cheats: PS5, Xbox Codes & Unlocks | GTASIX',
     '/guides/gta-6-vehicles-best-cars/': 'GTA 6 Cars & Vehicles: What Is Verified | GTASIX',
     '/guides/gta-6-missions-walkthroughs/': 'GTA 6 Missions & Walkthroughs: Guide Hub | GTASIX',
     '/guides/gta-6-best-price-where-to-buy/': 'GTA 6 Price Comparison & Buying Tips | GTASIX',
@@ -34,6 +34,8 @@ TITLE_OVERRIDES = {
 }
 
 META_OVERRIDES = {
+    '/guides/gta-6-release-date-and-time/': 'GTA 6 released November 19, 2026 for PS5 and Xbox Series X|S. Rockstar confirms availability; PC release date remains unannounced.',
+    '/guides/gta-6-cheat-codes/': 'GTA 6 cheats reported by hands-on reviewers: story unlocks, how to enter them, money codes, and warnings about saving and trophies.',
     '/guides/gta-6-how-to-save/': 'How to save GTA 6 on PS5 and Xbox: 15 manual save slots, autosave, and why Save Game is greyed out during missions.',
     '/guides/gta-6-how-to-switch-characters/': 'GTA 6 controls for switching Jason and Lucia on PS5 and Xbox, when the Partner Menu unlocks, and why swapping is unavailable.',
     '/guides/gta-6-jason-lucia-voice-actors/': 'GTA 6 voice actor confirmations: Dylan Rourke as Jason, Manni L. Perez as Lucia, and Stephen Root as Brian.',
