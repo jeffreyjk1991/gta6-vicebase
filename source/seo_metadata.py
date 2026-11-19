@@ -12,7 +12,8 @@ TITLE_OVERRIDES = {
     '/buy/': 'Where to Buy GTA 6: PS5 & Xbox Prices | GTASIX',
     '/videos/': 'Official GTA 6 Trailers & Gameplay Videos | GTASIX',
     '/tools/': 'GTA 6 Storage Calculator & Download Timer | GTASIX',
-    '/guides/': 'GTA 6 Guides: Storage, Fixes & Gameplay | GTASIX',
+    '/guides/': 'GTA 6 Guides: Settings, Gameplay & Map | GTASIX',
+    '/guides/gta-6-best-settings/': 'GTA 6 Best Settings: PS5, Xbox, Controls & Camera | GTASIX',
     '/gta-6-facts/': 'GTA 6 Confirmed Facts: Launch, Map & Cast | GTASIX',
     '/guides/gta-6-download-size-ps5-xbox/': 'GTA 6 Download Size: PS5 & Xbox Storage | GTASIX',
     '/guides/best-ps5-ssd-requirements-for-gta-6/': 'Best PS5 SSD Specs for GTA 6 | GTASIX',
@@ -29,13 +30,14 @@ TITLE_OVERRIDES = {
 }
 
 META_OVERRIDES = {
-    '/': 'GTA 6 guides, detailed Leonida map, Jason and Lucia profiles, official gameplay videos, PS5 and Xbox storage fixes, launch tools and where to buy GTA VI.',
+    '/': 'GTA 6 maps, best PS5 and Xbox gameplay settings, guides, characters, official videos, storage fixes, walkthroughs and game tools in one place.',
     '/map/': 'Explore the GTA 6 Leonida and Vice City community map with street-level zoom, location search and saved pins. Unofficial reconstruction, clearly labeled.',
     '/characters/': 'Meet GTA 6 characters Jason Duval, Lucia Caminos, Cal Hampton and more. Read verified backgrounds, connections and official Rockstar sources.',
     '/buy/': 'Compare GTA 6 PS5 and Xbox retailer listings, Standard and Ultimate editions, legitimate discounts and code-in-box warnings. Prices are dated snapshots.',
     '/videos/': 'Watch official GTA 6 trailers, extended gameplay footage and launch videos from Rockstar Games. Find real sources, not fake gameplay or leaks.',
     '/tools/': 'Check GTA 6 PS5 storage space, estimate download time and use the launch checklist. Understand the 212 GB PS5 recommendation and Xbox differences.',
-    '/guides/': 'Browse GTA 6 guides for launch, storage, PS5 SSD upgrades, Xbox downloads, troubleshooting, characters, gameplay and verified map information.',
+    '/guides/': 'Browse GTA 6 settings, gameplay tips, maps, PS5 and Xbox guides, characters, storage fixes, walkthroughs and official-source answers.',
+    '/guides/gta-6-best-settings/': 'Best GTA 6 settings for PS5, PS5 Pro and Xbox: tune aim assist, motion blur, driving camera, HDR and comfort. Use our interactive settings finder.',
     '/gta-6-facts/': 'GTA 6 confirmed facts: November 19, 2026 launch, PS5 and Xbox platforms, Leonida regions, Jason and Lucia, storage, editions and open questions.',
     '/guides/gta-6-download-size-ps5-xbox/': 'PS5 recommends at least 212 GB free for GTA 6. Learn what that number means, how to check Xbox storage and how to make space safely.',
     '/guides/best-ps5-ssd-requirements-for-gta-6/': 'Need more GTA 6 space on PS5? Check Sony-compatible M.2 SSD specifications, heatsink requirements and installation guidance before you buy.',

@@ -364,6 +364,31 @@ add('how-to-avoid-gta-6-scams-fake-leaks','How to avoid fake GTA 6 downloads, le
  [('Can I download GTA 6 on PC today?','No official PC launch is listed for November 19, 2026.'),('Are GTA 6 APK downloads legitimate?','No official Android GTA VI launch is announced.'),('Where do I buy GTA 6 safely?','Use Rockstar’s official store or your console storefront.')],[ROCKSTAR,STORE],read=4)
 
 # Intents not yet backed by tested gameplay are explicit and avoid fake pages.
+# Launch-day guide: Rockstar confirms the settings menus; suggested values are editorial starting points.
+add('gta-6-best-settings','Best GTA 6 settings for PS5, PS5 Pro and Xbox','gameplay',
+ 'Find the best GTA 6 in-game settings for smoother-feeling driving, clearer combat and comfortable play, with an interactive PS5 and Xbox preset builder.',
+ 'In GTA 6, open Pause Menu → Settings. A useful starting point is Motion Blur Strength 0, Camera Shake Off, Targeting Partial, Aim Assist Strength 4, and comfortable look/aim sensitivity. These are GTASIX recommendations, not an official preset or guaranteed FPS boost. Rockstar targets 30 FPS on consoles.',
+ [
+ 'Open Pause Menu → Settings and review Controller, Gameplay, Display, UI, Camera and Audio. The categories are listed by Rockstar Support.',
+ 'Under Display, try Motion Blur Strength 0. In Camera → Comfort, turn Camera Shake off and reduce Camera Bob if motion bothers you.',
+ 'Under Gameplay → Combat, begin with Partial targeting and Aim Assist Strength 4; use Lock-On for more help or Free Aim for a challenge.',
+ 'In Controller, start with Look and Aim Sensitivity around 7. Test 9 or 10 for look speed only if you feel sluggish. Adjust one step at a time.',
+ 'Under Gameplay → Movement, test Run for faster on-foot play; for driving, compare a medium or higher vehicle-camera height.',
+ 'Use UI → Navigation to keep the Minimap visible and UI → Subtitles & Captions to enable readable dialogue if helpful.',
+ 'Calibrate HDR for your TV, use TV Game Mode, and try the interactive presets on this page. These do not unlock a 60 FPS mode.'
+ ],
+ [
+ ('What are the best GTA 6 settings on PS5?','Start with Motion Blur Strength 0, Camera Shake Off, Targeting Partial, Aim Assist Strength 4 and look/aim sensitivity comfortable to you. Use the settings finder for driving, combat and cinematic profiles.'),
+ ('Does GTA 6 have a 60 FPS mode?','Rockstar targets 30 FPS on consoles in its official November 10 update. It did not promise a 60 FPS performance mode. PS5 Pro adds image clarity and ray-traced shadows.'),
+ ('Where is aim assist in GTA 6?','Open Pause Menu → Settings → Gameplay → Combat, then change Targeting and Aim Assist Strength.'),
+ ('How can I reduce GTA 6 motion sickness?','Try Motion Blur Strength 0, Camera Shake Off, Camera Bob 0–2 and a Persistent Center Dot, then adjust to comfort.'),
+ ('Are the settings presets official?','No. The menu categories are documented by Rockstar; GTASIX suggested values are independent, subjective starting points.'),
+ ('Are GTA 6 PC graphics settings available?','Rockstar has announced the November 19 launch on PS5 and Xbox Series X|S, not an official PC version or PC graphics options.')
+ ],
+ sources=['https://support.rockstargames.com/articles/4jUHNdP22SmaKSF8DWqhXC/how-to-change-grand-theft-auto-vi-settings','https://www.rockstargames.com/newswire/article/89834o94713o21/pre-load-grand-theft-auto-vi-now','https://www.gta6map.net/wiki/gta-6/guides/gta-6-settings-and-options'],
+ status='CONFIRMED',read=7,
+ aliases=['best gta 6 settings ps5','gta 6 xbox settings','gta6 best controller settings','gta 6 aim assist strength','gta 6 motion blur','gta 6 camera settings','gta vi display settings','gta 6 pro graphics','gta 6 settings for driving','gta 6 motion sickness'])
+
 roadmap=[
  ('Interactive Leonida map','Pinned locations, collectibles, activities and route filters','At launch, after verifying real coordinates'),
  ('Mission-by-mission guide','Objectives, fail states, reward and no-spoiler toggles','Requires released-game testing'),

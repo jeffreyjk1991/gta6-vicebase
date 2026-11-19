@@ -2,6 +2,15 @@
 (()=>{
   const $=(selector,root=document)=>root.querySelector(selector);
   const $$=(selector,root=document)=>Array.from(root.querySelectorAll(selector));
+  // Replace stale preload copy once the official launch date has arrived.
+  if(Date.now()>=Date.parse('2026-11-19T05:00:00Z')){
+    const strip=$('.topbar .wrap');if(strip){
+      const heading=$('strong',strip),link=$('a',strip);
+      if(heading)heading.textContent='GTA VI IS OUT NOW // NOV 19, 2026';
+      if(link){link.href='/guides/gta-6-best-settings/';link.textContent='Best in-game settings';}
+      for(const node of strip.childNodes)if(node.nodeType===3 && /Preload is live/.test(node.textContent))node.textContent=' Official launch-day guide · ';
+    }
+  }
   const menu=$('#mobile-menu'),links=$('#nav-links');
   function setMenu(open){
     if(!menu||!links)return;
