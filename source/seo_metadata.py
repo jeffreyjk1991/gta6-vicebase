@@ -40,7 +40,7 @@ META_OVERRIDES = {
     '/guides/gta-6-how-to-switch-characters/': 'GTA 6 controls for switching Jason and Lucia on PS5 and Xbox, when the Partner Menu unlocks, and why swapping is unavailable.',
     '/guides/gta-6-jason-lucia-voice-actors/': 'GTA 6 voice actor confirmations: Dylan Rourke as Jason, Manni L. Perez as Lucia, and Stephen Root as Brian.',
     '/guides/gta-6-reviews-scores/': 'GTA 6 reviews and ratings: dated November 19 Metacritic 99/100 report, critic impressions, and current review links.',
-    '/': 'GTA 6 launch guides: saving progress, switching characters, cheat codes, reviews, voice actors, gameplay settings and the Leonida map.',
+    '/': "GTA 6 online multiplayer status, PC release, price, map, cheats, reviews and PS5/Xbox crash fixes. Free guides, settings and game troubleshooting.",
     '/map/': 'Explore the GTA 6 Leonida and Vice City community map with street-level zoom, location search and saved pins. Unofficial reconstruction, clearly labeled.',
     '/characters/': 'Meet GTA 6 characters Jason Duval, Lucia Caminos, Cal Hampton and more. Read verified backgrounds, connections and official Rockstar sources.',
     '/buy/': 'Compare GTA 6 PS5 and Xbox retailer listings, Standard and Ultimate editions, legitimate discounts and code-in-box warnings. Prices are dated snapshots.',
@@ -61,6 +61,14 @@ META_OVERRIDES = {
     '/guides/gta-6-jason-lucia-characters/': 'Who are Jason Duval and Lucia Caminos in GTA 6? See Rockstar-confirmed story details and links to full character dossiers.',
     '/guides/gta-6-preload-not-working/': 'GTA 6 preload missing or stuck? Check store entitlement, console storage, download queues, network status and safer first troubleshooting steps.',
 }
+
+# Canonical titles and descriptions for new diagnostic guides.
+import json as _intent_json
+from pathlib import Path as _IntentPath
+for _item in _intent_json.loads((_IntentPath(__file__).with_name("issue_guides.json")).read_text(encoding="utf8")):
+    _p = "/guides/" + _item["slug"] + "/"
+    TITLE_OVERRIDES[_p] = _item["seoTitle"]
+    META_OVERRIDES[_p] = _item["metaDesc"]
 
 def _tidy(text, limit=158):
     text = ' '.join(text.split())

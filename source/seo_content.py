@@ -26,5 +26,11 @@ SECTIONS = {
 'gta-6-release-date-and-time': '''<section class="seo-extra"><h2>GTA 6 launch availability by platform</h2><div class="seo-table-wrap"><table class="seo-table"><thead><tr><th>Platform</th><th>November 19 availability</th></tr></thead><tbody><tr><td>PS5 and PS5 Pro</td><td>Available</td></tr><tr><td>Xbox Series X|S</td><td>Available</td></tr><tr><td>PC</td><td>No official launch date announced</td></tr><tr><td>PS4 and Xbox One</td><td>Not announced for launch</td></tr></tbody></table></div><p>Start with <a href="/guides/gta-6-best-settings/">best GTA 6 game settings</a> and <a href="/guides/gta-6-how-to-save/">how to save progress</a>.</p></section>''',
 }
 
+# Unique diagnostic content from the published issue-guide dataset.
+import json as _issue_json
+from pathlib import Path as _IssuePath
+for _item in _issue_json.loads((_IssuePath(__file__).with_name("issue_guides.json")).read_text(encoding="utf8")):
+    SECTIONS[_item["slug"]] = _item["extra"]
+
 def extra_sections(slug):
     return SECTIONS.get(slug,'')

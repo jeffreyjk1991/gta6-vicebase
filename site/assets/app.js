@@ -11,6 +11,15 @@
       for(const node of strip.childNodes)if(node.nodeType===3 && /Preload is live/.test(node.textContent))node.textContent=' Official launch-day guide · ';
     }
   }
+  // Link pre-existing static pages to the current support resources.
+  const legacyTools=document.querySelector('#nav-links a[href="/tools/"]');
+  if(legacyTools){legacyTools.href='/gta-6-help/';legacyTools.textContent='HELP';}
+  const footerTools=document.querySelector('.footer-cols a[href="/tools/"]');
+  if(footerTools&&!document.querySelector('.footer-cols a[href="/gta-6-online/"]')){
+    for(const [label,url] of [['GTA 6 Online','/gta-6-online/'],['GTA 6 Help','/gta-6-help/']]){
+      const el=document.createElement('a');el.href=url;el.textContent=label;footerTools.insertAdjacentElement('afterend',el);
+    }
+  }
   const menu=$('#mobile-menu'),links=$('#nav-links');
   function setMenu(open){
     if(!menu||!links)return;

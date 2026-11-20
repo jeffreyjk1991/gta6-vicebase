@@ -1,0 +1,49 @@
+/* GTASIX GTA VI Online and troubleshooting hubs – 20 Nov 2026 */
+.intent-main{padding:26px 0 64px;display:grid;gap:23px;max-width:1120px;margin:auto;min-width:0}
+.intent-intro{padding:clamp(20px,3vw,32px);border:1px solid #594a60;border-radius:17px;background:linear-gradient(130deg,#252236,#121922)}
+.intent-intro h2{font:800 clamp(29px,4vw,45px)/1.04 'Barlow Condensed',sans-serif;margin:9px 0 16px}
+.intent-intro p{color:#d0ccdc;line-height:1.7;max-width:910px}
+.intent-main a{color:#ffb6c9;text-underline-offset:4px}
+.intent-main a:hover{color:#fff2c3}
+.intent-status{display:inline-flex;border:1px solid #5c695f;border-radius:6px;color:#a8f0cf;background:#152a24;padding:7px 10px;font:700 10px/1.5 'Space Mono',monospace;letter-spacing:.04em}
+.intent-kicker{color:#ffbdd5!important;font:700 10px/1.5 'Space Mono',monospace!important;letter-spacing:.08em}
+.intent-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:23px}
+.intent-metrics>div{border:1px solid #514c62;background:#151d2d;border-radius:11px;padding:15px;min-width:0}
+.intent-metrics span{display:block;font:700 11px/1.5 'Space Mono',monospace;color:#d0c0d6}
+.intent-metrics strong{display:block;color:#aef2d1;font:850 clamp(17px,2.3vw,23px)/1.14 'Barlow Condensed',sans-serif;margin:8px 0}
+.intent-metrics small{color:#c3c2d2;font-size:11px;line-height:1.5}
+.intent-panel{border:1px solid #3e4556;border-radius:15px;background:#171d2a;padding:clamp(17px,3vw,26px);min-width:0}
+.intent-panel h2{font:800 clamp(25px,3vw,36px)/1.1 'Barlow Condensed',sans-serif;margin:0 0 15px}
+.intent-panel h3{font:800 23px/1.2 'Barlow Condensed',sans-serif;margin:20px 0 10px}
+.intent-panel p{color:#c6c5d0;line-height:1.7}
+.intent-table-scroll{overflow:auto;max-width:100%;border-radius:11px;border:1px solid #474658;margin:15px 0}
+.intent-table{width:100%;min-width:565px;border-collapse:collapse;text-align:left}
+.intent-table td,.intent-table th{padding:12px 13px;border-bottom:1px solid #353948;vertical-align:top;font-size:13px;line-height:1.5}
+.intent-table thead th{background:#25293a;font:700 11px/1.4 'Space Mono',monospace;color:#ffcfb9}
+.intent-table tbody th{color:#f5e9f6}
+.intent-table tbody tr:last-child td,.intent-table tbody tr:last-child th{border-bottom:0}
+.intent-small{font-size:12px!important;color:#aeadc1!important;line-height:1.65!important}
+.intent-link-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:19px 0 8px}
+.intent-link-grid>a{text-decoration:none;display:flex;flex-direction:column;gap:7px;padding:16px;border:1px solid #45495c;border-radius:10px;background:#212736}
+.intent-link-grid>a:hover{border-color:#e8a2b3;background:#2a293b}
+.intent-link-grid strong{color:#fff4f0;font-size:15px}
+.intent-link-grid span{font-size:12px;color:#bebed0;line-height:1.45}
+.intent-main .faqs{margin:14px 0}
+.help-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:14px}
+.help-heading h2{margin:5px 0 8px}
+.help-inputs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px;margin:13px 0}
+.help-inputs label,.help-error-label{color:#d6cce3;font:700 11px/1.5 'Space Mono',monospace;letter-spacing:.03em}
+.help-inputs select,.help-error-input{margin-top:7px;width:100%;background:#101725;color:#fff;border:1px solid #5b5369;border-radius:9px;padding:13px 12px;font:600 14px/1.4 'DM Sans',sans-serif;min-width:0}
+.help-error-label{display:block;margin-top:13px}
+.help-error-input{max-width:420px}
+.help-inputs select:focus-visible,.help-error-input:focus-visible,.help-copy:focus-visible{outline:2px solid #ffb5c5;outline-offset:3px}
+.help-results-head{display:flex;justify-content:space-between;align-items:center;gap:12px;border-top:1px solid #46445a;margin-top:23px;padding-top:20px}
+.help-results-head h3{margin:0;font-size:26px}
+.help-results-head p{font-size:13px;margin:6px 0 0}
+.help-copy{border:1px solid #f0b8a5;color:#24212e;background:#ffc7ae;border-radius:8px;padding:10px 15px;white-space:nowrap;font:800 11px/1.4 'Space Mono',monospace;cursor:pointer}
+.help-results{counter-reset:helpstep;list-style:none;display:grid;gap:11px;margin:18px 0;padding:0}
+.help-results li{position:relative;padding:14px 15px 14px 51px;border:1px solid #424658;border-radius:10px;background:#131a28;color:#dfdce8;line-height:1.65;font-size:14px}
+.help-results li:before{counter-increment:helpstep;content:counter(helpstep);position:absolute;left:14px;top:14px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:#48374c;color:#ffd3bb;width:24px;height:24px;font:800 12px/1 'Space Mono',monospace}
+.help-actions{display:flex;gap:13px;flex-wrap:wrap;margin:18px 0}
+.help-actions a{display:inline-flex;padding:11px 13px;border-radius:8px;border:1px solid #856379;text-decoration:none;color:#f5c3d7!important;font:700 11px/1.45 'Space Mono',monospace}
+@media(max-width:740px){.intent-main{gap:15px;padding-top:15px}.intent-metrics{grid-template-columns:1fr}.intent-link-grid,.help-inputs{grid-template-columns:1fr}.help-heading>.intent-status{display:none}.help-results-head{align-items:flex-start;flex-direction:column}.help-copy{width:100%}}
