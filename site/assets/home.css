@@ -1,5 +1,8 @@
 /* Homepage only: a compact entry point with accessible native disclosures. */
 .home-main{padding-bottom:38px}
+.home-link-arrow{display:inline-flex;vertical-align:middle;flex-shrink:0}
+.home-link-arrow svg{transform:rotate(-45deg);display:block}
+.home-footer .home-link-arrow{margin-left:5px}
 .home-main .home-hero{min-height:0;overflow:visible;z-index:2}
 .home-hero .hero-wrap{min-height:0;padding:38px 0 48px}
 .home-hero .hero-copy{max-width:650px;width:100%;min-width:0}

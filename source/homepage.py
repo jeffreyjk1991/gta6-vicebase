@@ -3,6 +3,7 @@ from html import escape
 
 
 def render_home(guide_count, search_markup, icon):
+    arrow = f'<span class="home-link-arrow" aria-hidden="true">{icon("arrow", 16)}</span>'
     shortcuts = [
         ('gamepad-2', 'Mission help', 'Hints and your next step.', '/gta-6-mission-help/'),
         ('map-pin', 'Interactive map', 'Explore and save places.', '/map/'),
@@ -74,7 +75,7 @@ def render_home(guide_count, search_markup, icon):
 
     cards = ''.join(
         f'<a class="home-shortcut{ " home-shortcut-featured" if i == 0 else ""}" href="{url}">'
-        f'<span class="home-shortcut-top">{icon(symbol, 23)}<span aria-hidden="true">↗</span></span>'
+        f'<span class="home-shortcut-top">{icon(symbol, 23)}{arrow}</span>'
         f'<h3>{escape(title)}</h3><p>{escape(description)}</p></a>'
         for i, (symbol, title, description, url) in enumerate(shortcuts)
     )
@@ -89,7 +90,7 @@ def render_home(guide_count, search_markup, icon):
             for title, description, url in group['links']
         )
         categories = ''.join(
-            f'<a href="/categories/{slug}/">{escape(title)} <span aria-hidden="true">↗</span></a>'
+            f'<a href="/categories/{slug}/">{escape(title)} {arrow}</a>'
             for title, slug in group['categories']
         )
         disclosures.append(
@@ -119,8 +120,8 @@ def render_home(guide_count, search_markup, icon):
     <div class="home-shortcuts">{cards}</div>
   </section>
   <section class="home-resources" id="resources" aria-labelledby="resource-hub-title">
-    <div class="home-section-heading"><div><h2 id="resource-hub-title">Browse all resources</h2><p>Open a topic to find its guides and tools.</p></div><a class="home-all-guides" href="/guides/">All {guide_count} guides <span aria-hidden="true">↗</span></a></div>
+    <div class="home-section-heading"><div><h2 id="resource-hub-title">Browse all resources</h2><p>Open a topic to find its guides and tools.</p></div><a class="home-all-guides" href="/guides/">All {guide_count} guides {arrow}</a></div>
     <div class="home-directory" id="topics">{''.join(disclosures)}</div>
-    <p class="home-editorial-note">Independent fan guide. Sources and review dates are listed in each guide. <a href="/editorial-policy/">How we check our content <span aria-hidden="true">↗</span></a></p>
+    <p class="home-editorial-note">Independent fan guide. Sources and review dates are listed in each guide. <a href="/editorial-policy/">How we check our content {arrow}</a></p>
   </section>
 </div></main>'''
