@@ -10,13 +10,13 @@ TITLE_OVERRIDES = {
     '/guides/gta-6-how-to-switch-characters/': 'GTA 6: How to Switch Jason & Lucia | GTASIX',
     '/guides/gta-6-jason-lucia-voice-actors/': 'GTA 6 Voice Actors: Jason, Lucia & Cast | GTASIX',
     '/guides/gta-6-reviews-scores/': 'GTA 6 Reviews: Metacritic Score & Verdict | GTASIX',
-    '/': 'GTA 6 Guides: Saves, Cheats, Map & Settings | GTASIX',
+    '/': 'GTA 6 Mission Help, Guides & Leonida Map | GTASIX',
     '/map/': 'GTA 6 Map: Detailed Leonida & Vice City | GTASIX',
     '/characters/': 'GTA 6 Characters: Jason, Lucia & More | GTASIX',
     '/buy/': 'Where to Buy GTA 6: PS5 & Xbox Prices | GTASIX',
     '/videos/': 'Official GTA 6 Trailers & Gameplay Videos | GTASIX',
     '/tools/': 'GTA 6 Storage Calculator & Download Timer | GTASIX',
-    '/guides/': 'GTA 6 Guides: Saves, Cheats, Map & Settings | GTASIX',
+    '/guides/': 'GTA 6 Guide Library: Gameplay, Settings & Fixes | GTASIX',
     '/guides/gta-6-best-settings/': 'GTA 6 Best Settings: PS5, Xbox, Controls & Camera | GTASIX',
     '/gta-6-facts/': 'GTA 6 Confirmed Facts: Launch, Map & Cast | GTASIX',
     '/guides/gta-6-download-size-ps5-xbox/': 'GTA 6 Download Size: PS5 & Xbox Storage | GTASIX',
@@ -40,23 +40,21 @@ META_OVERRIDES = {
     '/guides/gta-6-how-to-switch-characters/': 'GTA 6 controls for switching Jason and Lucia on PS5 and Xbox, when the Partner Menu unlocks, and why swapping is unavailable.',
     '/guides/gta-6-jason-lucia-voice-actors/': 'GTA 6 voice actor confirmations: Dylan Rourke as Jason, Manni L. Perez as Lucia, and Stephen Root as Brian.',
     '/guides/gta-6-reviews-scores/': 'GTA 6 reviews and ratings: dated November 19 Metacritic 99/100 report, critic impressions, and current review links.',
-    '/': "GTA 6 online multiplayer status, PC release, price, map, cheats, reviews and PS5/Xbox crash fixes. Free guides, settings and game troubleshooting.",
+    '/': "Stuck in GTA 6? Find mission hints, a next-step checklist, driving tips, a Leonida map and PS5 or Xbox fixes. Free, spoiler-conscious player guides.",
     '/map/': 'Explore the GTA 6 Leonida and Vice City community map with street-level zoom, location search and saved pins. Unofficial reconstruction, clearly labeled.',
     '/characters/': 'Meet GTA 6 characters Jason Duval, Lucia Caminos, Cal Hampton and more. Read verified backgrounds, connections and official Rockstar sources.',
     '/buy/': 'Compare GTA 6 PS5 and Xbox retailer listings, Standard and Ultimate editions, legitimate discounts and code-in-box warnings. Prices are dated snapshots.',
     '/videos/': 'Watch official GTA 6 trailers, extended gameplay footage and launch videos from Rockstar Games. Find real sources, not fake gameplay or leaks.',
-    '/tools/': 'Check GTA 6 PS5 storage space, estimate download time and use the launch checklist. Understand the 212 GB PS5 recommendation and Xbox differences.',
+    '/tools/': 'Use free GTA 6 mission help, settings tools, a storage calculator, download estimator and saved checklist. Useful on PS5 and Xbox, without an account.',
     '/guides/': 'Browse GTA 6 settings, gameplay tips, maps, PS5 and Xbox guides, characters, storage fixes, walkthroughs and official-source answers.',
     '/guides/gta-6-best-settings/': 'Best GTA 6 settings for PS5, PS5 Pro and Xbox: tune aim assist, motion blur, driving camera, HDR and comfort. Use our interactive settings finder.',
     '/gta-6-facts/': 'GTA 6 confirmed facts: November 19, 2026 launch, PS5 and Xbox platforms, Leonida regions, Jason and Lucia, storage, editions and open questions.',
     '/guides/gta-6-download-size-ps5-xbox/': 'PS5 recommends at least 212 GB free for GTA 6. Learn what that number means, how to check Xbox storage and how to make space safely.',
     '/guides/best-ps5-ssd-requirements-for-gta-6/': 'Need more GTA 6 space on PS5? Check Sony-compatible M.2 SSD specifications, heatsink requirements and installation guidance before you buy.',
     '/guides/gta-6-pc-release-system-requirements/': 'Is GTA 6 coming to PC? See what Rockstar has confirmed about launch platforms, and why unannounced PC release dates and system specs are guesses.',
-    '/guides/gta-6-release-date-and-time/': 'GTA 6 launches November 19, 2026, on PS5 and Xbox Series X|S. Check store-region unlock timing, preload status and official sources.',
     '/guides/gta-6-console-performance-fps/': 'What is confirmed about GTA 6 frame rates and PS5, PS5 Pro and Xbox performance? Separate official statements from benchmark guesses.',
     '/guides/gta-6-leonida-vice-city-map/': 'Explore Rockstar-named GTA 6 locations including Vice City and Leonida Keys. Compare official regions with the unofficial fan-made interactive map.',
-    '/guides/gta-6-cheat-codes/': 'Looking for GTA 6 cheat codes? Learn which claims remain unverified and how to spot fake code generators before the launch build can be tested.',
-    '/guides/gta-6-missions-walkthroughs/': 'Find the GTA 6 mission guide hub and see what will be tested after launch. No invented mission lists, spoilers or unverified objectives.',
+    '/guides/gta-6-missions-walkthroughs/': 'Get GTA 6 mission help, spoiler-controlled early hints and an objective checklist. Find your next step or open the linked walkthrough directory.',
     '/guides/gta-6-best-price-where-to-buy/': 'Compare GTA 6 Standard Edition prices on PS5 and Xbox, digital versus code-in-box copies and safe ways to save at checkout.',
     '/guides/gta-6-jason-lucia-characters/': 'Who are Jason Duval and Lucia Caminos in GTA 6? See Rockstar-confirmed story details and links to full character dossiers.',
     '/guides/gta-6-preload-not-working/': 'GTA 6 preload missing or stuck? Check store entitlement, console storage, download queues, network status and safer first troubleshooting steps.',
@@ -66,6 +64,11 @@ META_OVERRIDES = {
 import json as _intent_json
 from pathlib import Path as _IntentPath
 for _item in _intent_json.loads((_IntentPath(__file__).with_name("issue_guides.json")).read_text(encoding="utf8")):
+    _p = "/guides/" + _item["slug"] + "/"
+    TITLE_OVERRIDES[_p] = _item["seoTitle"]
+    META_OVERRIDES[_p] = _item["metaDesc"]
+
+for _item in _intent_json.loads((_IntentPath(__file__).with_name("gameplay_guides.json")).read_text(encoding="utf8")):
     _p = "/guides/" + _item["slug"] + "/"
     TITLE_OVERRIDES[_p] = _item["seoTitle"]
     META_OVERRIDES[_p] = _item["metaDesc"]

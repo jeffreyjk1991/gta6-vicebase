@@ -9,7 +9,6 @@ const context=document.getElementById('help-results-context');
 const guide=document.getElementById('help-guide');
 const official=document.getElementById('help-official');
 const copy=document.getElementById('help-copy');
-const rock='https://support.rockstargames.com/VI';
 const psg='https://www.playstation.com/en-us/support/games/game-launch-issues/';
 const xbox='https://support.xbox.com/help/errors/error-code-search-guide';
 const data={
@@ -22,9 +21,10 @@ graphics:{name:'Blurry graphics / low FPS',guide:'/guides/gta-6-blurry-graphics-
 audio:{name:'Audio cutting out',guide:'/guides/gta-6-audio-controller-problems/',note:'Headset audio problems have been reported but are not diagnosed here.',shared:['Check whether the problem happens through TV speakers, headset, or both.','Review the in-game Audio output and console sound format without resetting other settings.','Disconnect and reconnect the headset once, and confirm its firmware or battery status.','Fully restart GTA VI and confirm the latest available update.','Record the exact mission or moment and whether other games also have the problem.'],ps5:['PS5: check Settings → Sound and the selected Output Device.'],xbox:['Xbox: check Volume & audio output and headset pairing settings.']},
 controller:{name:'Controller or vibration issues',guide:'/guides/gta-6-audio-controller-problems/',note:'Unusual controller vibration or inputs have been reported.',shared:['Test the controller in the console home interface to separate game input from hardware failure.','Check the in-game Controller / Control Scheme settings and remapped buttons.','Reduce vibration or adaptive-trigger resistance as a comfort test.','Update controller firmware through the console and reconnect it once.','If only GTA VI is affected, record the mission, controller model and game version for Rockstar Support.'],ps5:['PS5: check Accessories → Controller and DualSense firmware.'],xbox:['Xbox: check Xbox Accessories for controller firmware updates.']}
 };
+const hasIssue=key=>Object.prototype.hasOwnProperty.call(data,key);
 function render(){
  const mode=platform.value==='xbox'?'xbox':'ps5';
- const key=data[issue.value]?issue.value:'crash';
+ const key=hasIssue(issue.value)?issue.value:'crash';
  const d=data[key];
  let list=[...d.shared,...d[mode]];
  title.textContent=d.name;
@@ -34,18 +34,30 @@ function render(){
  guide.href=key==='download'?(mode==='xbox'?'/guides/gta-6-download-stuck-xbox/':d.guide):d.guide;
  official.href=mode==='xbox'?(d.officialXbox||xbox):(d.officialPs||psg);
  copy.textContent='COPY STEPS';
+ document.getElementById('help-copy-fallback')?.remove();
  const url=new URL(location.href);url.searchParams.set('platform',mode);url.searchParams.set('issue',key);
  try{history.replaceState(null,'',url.pathname+url.search+url.hash);}catch{}
 }
 const params=new URLSearchParams(location.search);
 if(params.get('platform')==='xbox')platform.value='xbox';
-if(data[params.get('issue')])issue.value=params.get('issue');
+if(hasIssue(params.get('issue')))issue.value=params.get('issue');
 platform.addEventListener('change',render);issue.addEventListener('change',render);
 copy.addEventListener('click',async()=>{
  const code=error.value.trim().slice(0,80);
  const items=[...finder.querySelectorAll('li')].map((el,i)=>(i+1)+'. '+el.textContent);
  const message=['GTASIX GTA VI troubleshooting checklist',title.textContent,platform.value==='xbox'?'Xbox Series X|S':'PS5 / PS5 Pro',code?'Error code: '+code:'',...items,'Full guide: '+new URL(guide.getAttribute('href'),location.origin).href,'Official support: '+official.href].filter(Boolean).join('\n');
- try{await navigator.clipboard.writeText(message);copy.textContent='COPIED ✓';}catch{copy.textContent='SELECT AND COPY YOUR STEPS';}
+ try{await navigator.clipboard.writeText(message);document.getElementById('help-copy-fallback')?.remove();copy.textContent='COPIED ✓';}
+ catch{
+  document.getElementById('help-copy-fallback')?.remove();
+  const panel=document.createElement('div');panel.id='help-copy-fallback';panel.className='note-box';
+  const label=document.createElement('label');label.htmlFor='help-copy-text';label.textContent='Copy your checklist';
+  const hint=document.createElement('p');hint.textContent='Clipboard access is unavailable. Select and copy the text below.';
+  const field=document.createElement('textarea');field.id='help-copy-text';field.readOnly=true;field.rows=10;field.value=message;
+  field.style.cssText='display:block;width:100%;max-width:100%;padding:12px;font-size:16px;line-height:1.5;color:inherit;background:#151525;border:1px solid #566073;border-radius:8px';
+  panel.append(label,hint,field);copy.insertAdjacentElement('afterend',panel);
+  field.focus();field.select();field.setSelectionRange(0,message.length);
+  copy.textContent='COPY TEXT SHOWN BELOW';
+ }
 });
 render();
 })();

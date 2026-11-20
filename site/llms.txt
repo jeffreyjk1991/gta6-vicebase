@@ -1,23 +1,29 @@
-# GTASIX: GTA VI resource hub
-Website: https://gtasix.tech/
-Reviewed November 20, 2026. Independent fan site, not affiliated with Rockstar Games.
+# GTASIX — independent GTA VI guides
 
-## Search answers
-- GTA 6 Online date, multiplayer and crossplay: https://gtasix.tech/gta-6-online/
-- GTA 6 troubleshooting and console-based step finder: https://gtasix.tech/gta-6-help/
-- GTA 6 PC release status: https://gtasix.tech/guides/gta-6-pc-release-system-requirements/
-- GTA 6 release date: https://gtasix.tech/guides/gta-6-release-date-and-time/
-- GTA 6 prices and editions: https://gtasix.tech/buy/
-- Leonida map (fan reconstruction): https://gtasix.tech/map/
-- GTA 6 best in-game settings: https://gtasix.tech/guides/gta-6-best-settings/
-- GTA 6 reviews: https://gtasix.tech/guides/gta-6-reviews-scores/
-- GTA 6 cheat codes: https://gtasix.tech/guides/gta-6-cheat-codes/
-- GTA 6 save progress: https://gtasix.tech/guides/gta-6-how-to-save/
-- Error guides: https://gtasix.tech/categories/troubleshooting/
-- Full guide library: https://gtasix.tech/guides/
-- Sitemap: https://gtasix.tech/sitemap.xml
+Site: https://www.gtasix.tech/
+Last reviewed: November 20, 2026
+An unofficial Grand Theft Auto VI resource. Not affiliated with Rockstar Games.
 
-## Evidence and updates
-Officially confirmed sources take precedence. Third-party reports and community bug discussions are labeled and not represented as independently verified. Rockstar has not announced a GTA VI Online launch date, crossplay or PC release. We do not promise universal fixes.
-Official announcements: https://www.rockstargames.com/newswire/
-Official support: https://support.rockstargames.com/VI
+## Primary answers
+- GTA 6 Online release date: https://www.gtasix.tech/gta-6-online/ — no official GTA VI multiplayer launch date as of November 20, 2026; the initial game is single player.
+- GTA 6 Help Center: https://www.gtasix.tech/gta-6-help/ — platform-specific troubleshooting for PS5 and Xbox, source-backed and without unverified guaranteed fixes.
+- Latest GTA VI launch: https://www.gtasix.tech/guides/gta-6-release-date-and-time/
+- GTA VI PC status: https://www.gtasix.tech/guides/gta-6-pc-release-system-requirements/
+- Gameplay settings: https://www.gtasix.tech/guides/gta-6-best-settings/
+- GTA 6 map: https://www.gtasix.tech/map/ — clearly labeled unofficial community reconstruction
+- GTA 6 characters: https://www.gtasix.tech/characters/
+- GTA 6 save progress: https://www.gtasix.tech/guides/gta-6-how-to-save/
+- GTA 6 price and editions: https://www.gtasix.tech/buy/
+- Troubleshooting guides: https://www.gtasix.tech/categories/troubleshooting/
+- Guide library: https://www.gtasix.tech/guides/
+- Sitemap: https://www.gtasix.tech/sitemap.xml
+
+## Editorial standards
+Each guide has dated source links and verification status. We distinguish Rockstar/PlayStation announcements, press reports, community complaints, and speculation. Online dates, crossplay and PC release must not be stated as confirmed without an official announcement.
+Official sources: https://www.rockstargames.com/newswire/ ; https://support.rockstargames.com/VI
+
+## Gameplay help
+- [Mission and gameplay helper](https://www.gtasix.tech/gta-6-mission-help/): spoiler-controlled early mission hints, practical checklists and device-local saved plans.
+- [No mission marker](https://www.gtasix.tech/guides/gta-6-no-mission-marker-what-to-do/): objective and navigation checks.
+- [Vice City comparison](https://www.gtasix.tech/guides/gta-6-map-vs-vice-city/): original city, Leonida and honest map comparisons.
+- [Driving tips](https://www.gtasix.tech/guides/gta-6-driving-tips-and-physics/): control paths and practical driving guidance.

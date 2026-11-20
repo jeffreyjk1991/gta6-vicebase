@@ -19,4 +19,4 @@ Allow: /
 User-agent: Claude-User
 Allow: /
 
-Sitemap: https://gtasix.tech/sitemap.xml
+Sitemap: https://www.gtasix.tech/sitemap.xml

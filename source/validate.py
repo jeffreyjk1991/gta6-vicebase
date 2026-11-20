@@ -5,7 +5,11 @@ from urllib.parse import urlparse,unquote
 root=Path(__file__).resolve().parent.parent/'site';htmls=list(root.rglob('*.html'))
 errors=[];checks=0;external=set();titles=set();paths=set()
 for file in htmls:
- s=BeautifulSoup(file.read_text(), 'html.parser')
+ raw=file.read_text()
+ # Search Console verification tokens are not HTML documents.
+ if file.name.startswith('google') and raw.strip()=='google-site-verification: '+file.name:
+  continue
+ s=BeautifulSoup(raw, 'html.parser')
  title=s.title.get_text(strip=True) if s.title else ''
  if not title:errors.append(f'{file}: empty title')
  if title in titles:errors.append(f'{file}: duplicate title {title}')

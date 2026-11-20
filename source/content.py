@@ -230,14 +230,15 @@ add('gta-6-digital-vs-physical-code-in-box','GTA 6 physical vs digital: the code
  [('Is there a GTA 6 game disc?','Rockstar’s announced 2026 physical version contains a digital download code rather than a disc.'),('Will it save download space?','No. The full game still needs to be downloaded and installed.'),('Can I sell the game code after redeeming?','A redeemed code is linked to the purchasing account; check store license terms.')],[EDITION,STORE],read=4)
 
 add('gta-6-beginner-preparation-guide','GTA 6 beginner guide: what to do in your first hour','gameplay',
-'A spoiler-free launch plan focused on finding real in-game systems rather than invented exploits.',
+'A spoiler-conscious first-session checklist for controls, objectives, navigation and saving progress.',
 'Start with the opening objectives, learn the controls and map interface, test driving and cover, and avoid spending rare resources until the actual in-game economy is clear.',
 ['Complete the opening tutorial and look for accessibility, subtitles, aim and camera preferences.',
  'Spend a few minutes practicing vehicle handling in a low-stakes area.',
  'Learn the map legend, waypoint controls and how missions are identified before roaming far.',
  'Use manual and automatic save options only as the shipped game presents them; confirm any autosave icon.',
  'For money, vehicles and weapons, wait for verified unlocks and real in-game prices before following tier lists.'],
- [('What should I do first in GTA 6?','Follow the opening objectives, set comfortable controls and familiarize yourself with the map.'),('Are there tested “fast money” methods yet?','This guide does not claim launch-only exploits before hands-on testing.'),('Will my progress carry between consoles?','Rockstar has not provided a general cross-save guarantee in the linked prelaunch platform FAQ.')],[ROCKSTAR],status='PRE-LAUNCH PLAN',read=5)
+ [('What should I do first in GTA 6?','Follow the opening objectives, set comfortable controls and familiarize yourself with the map.'),('Should I follow a fast-money trick immediately?','Check its source, version and effect on saved progress before trying it. A beginner session is a good time to learn the normal systems first.'),('Can I use GTASIX while I play?','Yes. Open the mission helper on another screen and choose your current problem to get a checklist without revealing later story events.')],[ROCKSTAR],status='EDITORIAL GUIDANCE',read=5)
+articles[-1]['updated']='2026-11-20'
 
 add('gta-6-beginner-driving-tips','GTA 6 driving tips for beginners','gameplay',
 'Practical control and camera habits without inventing car stats.',
@@ -245,17 +246,21 @@ add('gta-6-beginner-driving-tips','GTA 6 driving tips for beginners','gameplay',
 ['Choose a familiar third-person camera view and comfortable steering sensitivity.',
  'Practice moderate throttle input and slow down before sharp turns.',
  'Try a vehicle you can replace rather than immediately chasing unverified “fastest car” claims.',
- 'Pay attention to driving assists or accessibility settings if shown in the final game.'],
- [('What is the fastest car in GTA 6?','A verified in-game ranking needs controlled testing in the shipped game.'),('Will the driving feel like GTA 5?','Rockstar has not published a complete comparison of handling parameters.'),('Where are the controls?','Use the Controls settings menu in the shipped game; platform layouts may differ.')],[ROCKSTAR],status='PRE-LAUNCH PLAN',read=3)
+ 'If vehicle control remains difficult, review the control layout and camera options before changing several settings together.'],
+ [('What is the fastest car in GTA 6?','A verified in-game ranking needs controlled testing in the shipped game.'),('Will the driving feel like GTA 5?','Rockstar has not published a complete comparison of handling parameters.'),('Where are the controls?','Pause and open Settings, then Control Scheme. Check the layout displayed for your chosen console and vehicle type.')],[ROCKSTAR,'https://support.rockstargames.com/articles/4jUHNdP22SmaKSF8DWqhXC/how-to-change-grand-theft-auto-vi-settings'],status='EDITORIAL GUIDANCE',read=3)
+articles[-1]['updated']='2026-11-20'
 
-add('gta-6-missions-walkthroughs','GTA 6 story missions & walkthrough hub','gameplay',
-'A clear home for quest-by-quest guides as missions become verifiable.',
-'Mission-specific walkthroughs will be published only after objectives, checkpoint behavior and fail conditions can be checked in the released game. Until then, avoid lists claiming a definitive mission order.',
-['Use the official story synopsis to familiarize yourself with Jason, Lucia and Leonida.',
- 'At launch, follow the in-game mission markers and review the journal/map for active objectives.',
- 'If stuck, identify the exact mission name and objective before trying broad “skip mission” tricks.',
- 'Use the site search to return for verified, named mission walkthroughs after hands-on review.'],
- [('How many GTA 6 missions are there?','No independently verified final count is provided on this prelaunch site.'),('Can I skip missions?','Do not assume skip mechanics until verified in-game.'),('Will guides include spoilers?','Mission pages are intended to show spoiler warnings and step-by-step objectives.')],[ROCKSTAR],status='VERIFY AT LAUNCH',read=3)
+add('gta-6-missions-walkthroughs','GTA 6 mission help: find your next objective','gameplay',
+'Get a practical next-step plan, choose early mission hints and find a published walkthrough when you need more detail.',
+'Use the mission helper to choose what is blocking you, follow a short checklist and reveal hints only for the mission you select. It covers four early missions plus general navigation, driving, controls and progress problems; it is not a complete mission-by-mission walkthrough.',
+['Read the current objective exactly as the game displays it. Note the mission name if one is shown.',
+ 'Open the GTASIX mission helper and choose your console and the problem that best matches your screen.',
+ 'Follow the first suggested check, then mark the steps you have tried. Reveal a mission hint only when you want more detail.',
+ 'If your mission is outside the four early missions covered, use the linked published walkthrough directory and search for its exact name.',
+ 'For a frozen game, crash or missing save, use the technical Help Center before considering a reinstall.'],
+ [('Does this site have every GTA 6 mission walkthrough?','No. The helper provides sourced hints for four early missions and general gameplay checklists. A linked editorial directory provides broader coverage.'),('Will I see story spoilers?','Specific hints require selecting a mission and revealing details. Codes are hidden behind separate controls.'),('Can I save a help checklist?','Yes. The mission helper can save your plan on this device when you choose Save plan. It does not synchronize with your game save.'),('Does everyone play missions in one fixed order?','Do not use a directory number as a universal progression order. Some early missions can be attempted in different orders after the opening.')],
+[ROCKSTAR,'https://www.videogameschronicle.com/guide/grand-theft-auto-6-complete-walkthrough-hub/','https://www.videogameschronicle.com/guide/gta-6-gear-up-mission-walkthrough/'],status='SOURCE-BASED HELP',read=4,aliases=['stuck in gta 6','what to do next','mission help','mission walkthrough','objective not progressing','first missions'])
+articles[-1]['updated']='2026-11-20'
 
 add('gta-6-money-making-guide','GTA 6 money-making methods: what is confirmed?','gameplay',
 'A realistic starting point for evaluating payouts, risk and time investment.',
@@ -388,6 +393,13 @@ for _item in _issue_json.loads((_IssuePath(__file__).with_name("issue_guides.jso
     add(_item["slug"], _item["title"], _item["category"], _item["summary"], _item["answer"],
         _item["steps"], _item["faqs"], sources=_item["sources"], status=_item["status"],
         read=_item["read"], aliases=_item["aliases"])
+
+import json as _gameplay_json
+from pathlib import Path as _GameplayPath
+# Gameplay resources share content, metadata and supplementary sections.
+for _guide in _gameplay_json.loads((_GameplayPath(__file__).with_name("gameplay_guides.json")).read_text(encoding="utf8")):
+    add(_guide["slug"],_guide["title"],_guide["category"],_guide["summary"],_guide["answer"],_guide["steps"],_guide["faqs"],sources=_guide["sources"],status=_guide["status"],read=_guide["read"],aliases=_guide["aliases"])
+    articles[-1]["updated"]="2026-11-20"
 
 roadmap=[
  ('Interactive Leonida map','Pinned locations, collectibles, activities and route filters','At launch, after verifying real coordinates'),

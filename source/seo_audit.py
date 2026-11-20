@@ -9,7 +9,8 @@ from collections import Counter
 import json, xml.etree.ElementTree as ET, sys
 ROOT=Path(__file__).resolve().parent.parent
 SITE=ROOT/'site'
-base='https://gtasix.tech'
+import os
+base=os.environ.get('BASE_URL','https://www.gtasix.tech').rstrip('/')
 errors=[]
 pages=list(SITE.rglob('index.html'))
 all_titles=[]; all_urls=[]; all_checks=0

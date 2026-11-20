@@ -1,8 +1,29 @@
 # GTASIX — GTA VI Resource Hub
 
-A mobile-friendly, neon gaming-themed GTA VI resource website built on static HTML, CSS and vanilla JavaScript. This version contains 36 editorially sourced guides across 8 categories, 53 indexed routes including a dedicated GTA 6 Leonida map, first-party video links, a live local search index, a PS5/Xbox storage calculator, a download-time estimator, and a saved launch checklist, a native 24-pin interactive Leonida concept atlas with filters/zoom/bookmarks, a live store-region-selectable release countdown, and a "Where to Buy" deal desk with manually checked PS5/Xbox storefront prices and 6 money-saving tips.
+A mobile-friendly GTA VI resource website built with static HTML, CSS and vanilla JavaScript. It includes 49 source-linked guides, 79 indexable routes, a mission and gameplay helper, a community Leonida map, character profiles, settings recommendations, technical troubleshooting, storage and download calculators, and device-local saved checklists.
 
-**Editorial as-of:** 2026-11-18. The game is scheduled to launch 2026-11-19. Update launch-day articles as soon as actual play can be verified; guides marked `VERIFY AT LAUNCH` are not claims to contain tested gameplay before release.
+**Player-help update: November 20, 2026.** The obsolete release countdown is removed. The homepage, navigation and tools now prioritize what players can use while playing. Individual articles retain their own review dates and verification labels.
+
+## Mission and gameplay helper
+
+`/gta-6-mission-help/` offers eight problem paths and sourced hints for Prologue, Gone Fishing, Gear Up and Lab Fees. Detailed hints and solutions are opt-in. Coverage is deliberately limited to the cited walkthroughs; general checklists are editorial suggestions.
+
+- `source/mission_helper.py` owns content, crawlable HTML, metadata and structured data.
+- `site/assets/mission-help.js` handles matching, hints, checklist completion, explicit Save/Resume/Clear and safe copy/share fallback.
+- `site/assets/mission-help.css` provides responsive presentation.
+- Objective notes never leave the page, are never saved, and are excluded from copied text and URLs. Saved choices and check marks remain only in that browser.
+- `source/gameplay_guides.json` supplies new navigation, driving and original Vice City comparison guides to content, metadata and related sections.
+
+## Build and validation
+
+```bash
+python3 -m pip install -r source/requirements.txt
+python3 source/build.py
+python3 source/validate.py
+python3 source/seo_audit.py
+```
+
+The build defaults to `https://www.gtasix.tech`, the live final hostname after the apex-domain redirect. `BASE_URL` overrides it for alternate build targets. Search Console's verification token is retained as a verification resource, not treated as an HTML content page by the validator.
 
 ## Repo layout
 
@@ -21,7 +42,7 @@ A mobile-friendly, neon gaming-themed GTA VI resource website built on static HT
 2. Unzip this folder and push **the contents** (including both `site` and `source`) to the repository's `main` branch.
 3. In Vercel, **Add New Project** and import that new GitHub repository. Set **Root Directory = `site`**. Choose `Other` / static framework, with no build command. This publishes the already-generated files. Use a distinct Vercel project name (for example, `gta6-vicebase`).
 4. Connect the GitHub integration. On future commits, Vercel will deploy the updated `site/` files automatically.
-5. The canonical URL now defaults to `https://gtasix.tech`. Attach the domain in the actual Vercel project before search indexing. See [`DOMAIN-SETUP.md`](DOMAIN-SETUP.md) for verification, DNS and redirects.
+5. The canonical URL now defaults to `https://www.gtasix.tech`. Attach the domain in the actual Vercel project before search indexing. See [`DOMAIN-SETUP.md`](DOMAIN-SETUP.md) for verification, DNS and redirects.
 6. Optionally connect the separate Neon project `gta6-vicebase`. Its database is `vicebase`. The static build **does not require database credentials**. The Neon schema is ready for later authenticated moderation, guide request forms and user feedback, but those APIs are **not enabled** in this version.
 
 No credentials, API tokens or `.env` files are included. Do not add database connection credentials to client-side JavaScript or commit them to GitHub.
@@ -40,7 +61,7 @@ Static generated pages are source-controlled so a GitHub + Vercel deployment nee
 ## SEO notes
 
 - Individual guide URLs, canonical links, unique titles/descriptions, Open Graph markup, FAQ structured data, articles, breadcrumbs, search, `robots.txt` and `sitemap.xml` are generated.
-- The canonical hostname is **`https://gtasix.tech`**. That does not prove DNS or a Vercel domain assignment is active. Verify the live host before asking search engines to index it.
+- The canonical hostname is **`https://www.gtasix.tech`**. That does not prove DNS or a Vercel domain assignment is active. Verify the live host before asking search engines to index it.
 - Editorial pages distinguish Rockstar/PlayStation/Xbox-supported facts from guidance requiring in-game verification. No keyword-stuffed fake cheats or missions.
 - After the site is live, submit the correct sitemap via Google Search Console and monitor indexing. Search engines and AI systems do not guarantee a top ranking.
 
@@ -77,3 +98,9 @@ This is an independent, unofficial fan guide. Map accuracy will need launch-day 
 ## GTASIX identity and domain migration (November 18, 2026)
 
 The public brand is now **GTASIX** (`gtasix.tech`). Header, footer, page titles, canonical links, Open Graph/Twitter cards, Article/Organization/WebSite JSON-LD, XML sitemap, robots.txt, installable web manifest, favicon and social sharing artwork are updated from the source generator. The old Github and Neon project identifiers remain untouched to preserve integrations. Browser-local saved items use new `gtasix-` storage keys with backward-compatible fallback to their earlier names when viewed on the same origin. See [`DOMAIN-SETUP.md`](DOMAIN-SETUP.md) for registrar and Vercel configuration.
+
+## Verification for the November 20 player-help update
+
+The source build and static audits cover all 79 indexable pages, canonical URLs, distinct page titles, schema parsing, sitemap membership and more than 3,100 internal links. The mission helper additionally validates URL options, stored plans and unavailable clipboard/storage behavior. Browser verification should cover the homepage entry point, mission hint disclosure, saved plan resume, search, technical fallback and narrow-screen layout whenever these features change.
+
+Historical one-off scripts such as `fix_countdown.py` and `update_buy.py` are migration artifacts; do not run them as part of the current build. The supported entry point is `source/build.py`.
