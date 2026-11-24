@@ -401,6 +401,15 @@ for _guide in _gameplay_json.loads((_GameplayPath(__file__).with_name("gameplay_
     add(_guide["slug"],_guide["title"],_guide["category"],_guide["summary"],_guide["answer"],_guide["steps"],_guide["faqs"],sources=_guide["sources"],status=_guide["status"],read=_guide["read"],aliases=_guide["aliases"])
     articles[-1]["updated"]="2026-11-20"
 
+# Additional source-backed GTA VI guides, reviewed on November 24, 2026.
+import json as _trend_json
+from pathlib import Path as _TrendPath
+for _guide in _trend_json.loads((_TrendPath(__file__).with_name("trend_guides.json")).read_text(encoding="utf8")):
+    add(_guide["slug"],_guide["title"],_guide["category"],_guide["summary"],_guide["answer"],
+        _guide["steps"],_guide["faqs"],sources=_guide["sources"],status=_guide["status"],
+        read=_guide["read"],aliases=_guide["aliases"])
+    articles[-1]["updated"]=_guide["updated"]
+
 roadmap=[
  ('Interactive Leonida map','Pinned locations, collectibles, activities and route filters','At launch, after verifying real coordinates'),
  ('Mission-by-mission guide','Objectives, fail states, reward and no-spoiler toggles','Requires released-game testing'),

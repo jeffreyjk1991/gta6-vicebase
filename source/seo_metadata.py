@@ -73,6 +73,12 @@ for _item in _intent_json.loads((_IntentPath(__file__).with_name("gameplay_guide
     TITLE_OVERRIDES[_p] = _item["seoTitle"]
     META_OVERRIDES[_p] = _item["metaDesc"]
 
+# Canonical, intent-specific metadata for newly published player questions.
+for _guide in _intent_json.loads((_IntentPath(__file__).with_name("trend_guides.json")).read_text(encoding="utf8")):
+    _path="/guides/"+_guide["slug"]+"/"
+    TITLE_OVERRIDES[_path]=_guide["seoTitle"]
+    META_OVERRIDES[_path]=_guide["metaDesc"]
+
 def _tidy(text, limit=158):
     text = ' '.join(text.split())
     if len(text) <= limit:

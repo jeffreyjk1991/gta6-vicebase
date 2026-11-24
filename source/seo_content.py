@@ -38,5 +38,9 @@ SECTIONS['gta-6-missions-walkthroughs'] = '''<section class="seo-extra"><h2>Choo
 SECTIONS['gta-6-beginner-driving-tips'] = '''<section class="seo-extra"><h2>Build a driving practice routine</h2><p>Start with the habits below, then use our <a href="/guides/gta-6-driving-tips-and-physics/">driving and physics comparison guide</a> to compare braking, cornering and camera changes consistently. If a mission’s driving objective is blocking progress, <a href="/gta-6-mission-help/">build a next-step plan</a>.</p></section>'''
 SECTIONS['gta-6-beginner-preparation-guide'] = '''<section class="seo-extra"><h2>Your first session tools</h2><p>Keep the <a href="/gta-6-mission-help/">mission helper</a> nearby, set up a comfortable <a href="/guides/gta-6-best-settings/">control and camera preset</a>, and learn <a href="/guides/gta-6-how-to-save/">how to save your progress</a>. Use the in-game objective as your immediate guide; a community map is useful for exploration.</p></section>'''
 
+# One distinct table per GTA VI trending and troubleshooting guide.
+for _guide in _issue_json.loads((_IssuePath(__file__).with_name("trend_guides.json")).read_text(encoding="utf8")):
+    SECTIONS[_guide["slug"]]=_guide["extra"]
+
 def extra_sections(slug):
     return SECTIONS.get(slug,'')
