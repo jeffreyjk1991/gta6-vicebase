@@ -1,0 +1,44 @@
+/* Scoped, responsive UI for GTA 6 November 23 update hub. */
+.updates-main{max-width:1050px;display:grid;gap:20px;padding:24px 0 58px}
+.update-intro,.update-panel{min-width:0;border:1px solid #4b4155;border-radius:14px;padding:clamp(18px,3vw,30px);background:#191b2a}
+.update-intro{background:linear-gradient(125deg,#292036,#171a27);border-color:#805975}
+.update-kicker{color:#ffc6b2;font:700 11px/1.5 'Space Mono',monospace;letter-spacing:.05em}
+.update-intro h2,.update-panel h2{font:800 clamp(27px,3vw,37px)/1.12 'Barlow Condensed',sans-serif;margin:10px 0 15px}
+.update-intro p,.update-panel p{font-size:15px;line-height:1.7;color:#cfc6d5}
+.update-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:20px}
+.update-metrics>div{border:1px solid #534b61;border-radius:9px;background:#161c2a;padding:15px}
+.update-metrics span,.update-metrics small{display:block;font-size:11px;line-height:1.5;color:#ccc0cf}
+.update-metrics span{font-family:'Space Mono',monospace}
+.update-metrics strong{display:block;font:800 clamp(20px,2vw,26px)/1.2 'Barlow Condensed',sans-serif;color:#aff0d4;margin:8px 0}
+.update-panel a{color:#ffc7ab;text-underline-offset:4px}
+.update-panel-head{display:flex;justify-content:space-between;align-items:start;gap:14px}
+.update-panel-head h2{margin-top:3px}
+.update-checked{flex-shrink:0;font:700 10px/1.4 'Space Mono',monospace;color:#9ef1c5;border:1px solid #467e61;border-radius:5px;padding:8px}
+.update-select-wrap{max-width:570px;margin:24px 0}
+.update-select-wrap label{display:block;font:700 11px/1.6 'Space Mono',monospace;color:#e4d6df;margin-bottom:8px}
+.update-select-wrap select{display:block;width:100%;min-width:0;border:1px solid #77637c;border-radius:9px;padding:14px;background:#121827;color:#f6eaf4;font:600 15px/1.5 'DM Sans',sans-serif}
+.update-select-wrap select:focus-visible,.update-panel a:focus-visible{outline:2px solid #f3b3be;outline-offset:3px}
+.update-result{border:1px solid #5a5b6d;background:#111929;border-radius:12px;padding:clamp(16px,3vw,23px)}
+.update-result-status{display:inline-block;font:700 11px/1.4 'Space Mono',monospace!important;color:#a6ebc9!important;margin:0 0 8px!important}
+.update-result-status[data-confirmed="false"]{color:#ffc79d!important}
+.update-result h3{font:800 clamp(23px,2.8vw,29px)/1.2 'Barlow Condensed',sans-serif;margin:0 0 10px}
+.update-steps{margin:15px 0 17px;padding:0 0 0 24px;display:grid;gap:10px}
+.update-steps li{color:#dad0dd;line-height:1.55;font-size:14px;padding-left:4px}
+.update-result>a{display:inline-flex;padding:11px 15px;border:1px solid #a7798e;border-radius:7px;text-decoration:none;font:800 11px/1.4 'Space Mono',monospace}
+.update-result>a:hover{background:#3a293e}
+.update-footnote{font-size:12px!important;color:#a9a4bb!important;margin:14px 0 0}
+.update-scroll{overflow:auto;border:1px solid #504a5c;border-radius:10px}
+.update-table{width:100%;min-width:630px;border-collapse:collapse}
+.update-table th,.update-table td{padding:12px 13px;border-bottom:1px solid #3d3a4d;text-align:left;vertical-align:top;font-size:13px;line-height:1.55}
+.update-table th{background:#272738;color:#e6c0d1;font-weight:750}
+.update-table tbody tr:last-child td{border-bottom:0}
+.update-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.update-grid>div{border:1px solid #4c4458;border-radius:9px;padding:17px;min-width:0}
+.update-grid h3{font:800 23px/1.2 'Barlow Condensed',sans-serif}
+.update-grid li{font-size:14px;line-height:1.6;margin:7px 0;color:#cac6d6}
+.update-link-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.update-link-grid a{display:flex;flex-direction:column;text-decoration:none;gap:7px;border:1px solid #4a4558;border-radius:8px;padding:13px}
+.update-link-grid a:hover{background:#2a293a}
+.update-link-grid strong{color:#f9eaf1;font-size:14px}
+.update-link-grid span{color:#b8b0c5;font-size:12px;line-height:1.5}
+@media(max-width:700px){.update-metrics{grid-template-columns:1fr}.update-panel-head{display:block}.update-checked{display:none}.update-grid,.update-link-grid{grid-template-columns:1fr}.updates-main{gap:13px;padding-top:14px}}
